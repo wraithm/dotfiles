@@ -1,0 +1,17 @@
+#!/bin/sh
+pfile="${1}"
+pdir="${HOME}/.mutt/temp/print"
+
+if [ ! -d ${pdir} ]; then
+    mkdir -p ${pdir}
+fi
+
+# delete any old temporary files first
+rm -f ${pdir}/*_mutt.pdf
+
+tmpfile="`mktemp ${pdir}/mutt_XXXXXXXX`"
+mv -f ${tmpfile} ${tmpfile}.pdf
+#enscript --font=Times-Roman10 --pretty-print ${1} -o - 2>/dev/null | pstopdf -i -o ${tmpfile}.pdf
+enscript --pretty-print ${1} -o - 2>/dev/null | pstopdf -i -o ${tmpfile}.pdf
+open ${tmpfile}.pdf
+

@@ -1,0 +1,28 @@
+! Colors
+#include "/home/matt/.term/themes/w0ng-hybridtrans"
+
+! URxvt
+URxvt*dynamicColors:    on
+URxvt*cursorUnderline:  false 
+URxvt*depth:            32
+URxvt*font:             xft:Terminess Powerline:size=9:antialias=true:hinting=true
+URxvt*imLocale:         en_us.UTF-8
+URxvt.iso14755:         off
+URxvt.matcher.button:   1
+URxvt.perl-ext-common:  default,matcher
+URxvt*saveLines:        12000
+URxvt*scrollBar_right:  true
+URxvt*scrollBar:        false
+URxvt*scrollstyle:      plain
+URxvt*termName:         rxvt-unicode-256color
+URxvt.urgentOnBell:     true
+URxvt.url-launcher:     /usr/bin/chromium
+URxvt.underlineURLs:    true
+
+! Xft
+Xft.lcdfilter:          lcddefault
+Xft.dpi:                96
+Xft.antialias:          true
+Xft.rgba:               rgb
+Xft.hinting:            true
+Xft.hintstyle:          hintslight

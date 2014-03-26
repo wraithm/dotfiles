@@ -1,0 +1,92 @@
+set realname="Matthew Wraith"
+set envelope_from=yes
+set editor=vim
+
+set mail_check=60
+set timeout=15
+
+#printing
+set print_command="~/.mutt/muttprint"
+#set print_command="muttprint"
+
+#Multiple Accounts
+source ~/.mutt/account3.muttrc
+
+#REMOVED ACCOUNT INFO...
+#WOULD NORMALLY LIVE HERE
+
+
+#SMTP
+#set sendmail="/opt/local/bin/msmtp"
+set certificate_file="~/.mutt/.certs"
+#set sendmail_wait="-1"
+
+#reading mails without headers and other
+#set sort=reverse-date
+
+#header stuff
+ignore *
+unhdr_order *
+unignore  Date To From Cc: Subject X-Mailer Organization User-Agent
+hdr_order From To Cc Date Subject X-Mailer User-Agent Organization
+bind pager h display-toggle-weed
+
+#other
+set header_cache=~/.mutt/cache/headers
+set tmpdir=~/.mutt/temp
+set alias_file=~/.mutt/aliases
+#set query_command="mutt-google-contacts '%s'"
+set query_command="goobook query '%s'"
+bind editor <Tab> complete-query
+macro index,pager a "<pipe-message>goobook add<return>" "add the sender address to Google contacts"
+set fast_reply
+set meta_key
+set include
+set forward_quote
+set markers=no
+set pager_stop
+set sort='threads'
+set sort_browser='reverse-date'
+set menu_scroll
+set ispell="aspell -e -c"
+
+#colors
+#color status default blue 
+#color indicator black green
+source ~/.mutt/colors
+
+#sidebar stuff
+set sidebar_width=20
+set sidebar_visible=no
+set sidebar_delim='|'
+#set sidebar_sort=yes
+color sidebar_new yellow default
+bind index \CP sidebar-prev
+bind index \CN sidebar-next
+bind index \CO sidebar-open
+bind pager \CP sidebar-prev
+bind pager \CN sidebar-next
+bind pager \CO sidebar-open
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+bind index B bounce-message
+bind pager \c? previous-line 
+
+#opening and viewing things
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+
+alternative_order text/plain *
+auto_view text/html
+auto_view application/pdf 
+
+# Gmail key macros
+#bind editor <space> noop #idk what this is
+bind  index,pager t  flag-message   #Star a message
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager ga "<change-folder>=[Gmail]/All<quote-char> Mail<enter>" "Go to all mail"
+#macro index,pager gs "<change-folder>=[Gmail]/Sent<quote-char> Mail<enter>" "Go to sent mail"
+#macro index,pager gs "<change-folder>=[Gmail]/Drafts<enter>" "Go to sent mail"
+macro index,pager gl "<change-folder>?" "Go to 'Label'"
+macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+bind  index,pager a  group-reply    #Reply all

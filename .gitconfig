@@ -1,0 +1,12 @@
+[user]
+	email = #######@gmail.com
+	name = Matthew Wraith
+[credential]
+	helper = cache
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[alias]
+    co = checkout
+    br = branch

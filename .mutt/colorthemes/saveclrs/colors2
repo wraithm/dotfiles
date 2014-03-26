@@ -1,0 +1,67 @@
+# Default colour definitions
+#color normal        white       default
+#color quoted yellow default
+#color quoted1 green default
+#color quoted2 white default
+#color quoted3 yellow default
+#color quoted4 green default
+#color quoted5 white default
+
+color quoted magenta default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 magenta default
+color quoted4 cyan default
+color quoted5 green default
+color quoted6 magenta default
+color quoted7 cyan default
+
+#color indicator     black       cyan
+color indicator black green
+#color message yellow black
+#color status yellow blue
+color status default blue
+color error yellow red
+color attachment magenta default
+#color tilde yellow black
+color tilde blue default
+#color search white red
+color tree green default
+#color tree brightmagenta default
+#color bold brightyellow default
+
+color hdrdefault cyan default
+color header green default '^From:'
+#color header red default '^Subject:'
+#color header yellow default '^(To|CC):.*matt'
+
+# Colours for items in the index
+#color index cyan default ~N
+color index brightyellow default ~N
+color index red default ~F
+color index green default ~T
+color index brightred default ~D
+color index white default ~u
+
+# Highlights inside the body of a message.
+
+# URLs
+#color body brightgreen default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+#color body brightgreen default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+#color body brightgreen default "www.[-a-z_0-9.]+.(com|edu|org|net)"
+color body brightmagenta default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightmagenta default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightmagenta default "www.[-a-z_0-9.]+.(com|edu|org|net)"
+
+# email addresses
+color body brightcyan default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+#color body yellow default "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+#color body yellow default "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)"     # _Underlined_ text.
+#color body yellow default "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)"     # /Italic/ text.
+color body yellow default "(^| )+(|[&lt;&gt;|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+color body yellow default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[&lt;&gt;|])( |$)+"
+color body yellow default "(^| )\\*[^ ]+\\*( |$)"
+color body yellow default "(^| )_[^ ]+_( |$)"
+color body yellow default "(^| )/[^ ]+/( |$)"

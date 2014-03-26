@@ -1,0 +1,43 @@
+#quotes
+color quoted green default
+color quoted1 red default
+color quoted2 magenta default
+color quoted3 blue default
+color quoted4 green default
+color quoted5 red default
+color quoted6 magenta default
+color quoted7 blue default
+
+#standard stuff
+color indicator black green
+color status default blue
+color error yellow red
+color attachment magenta default
+color tilde blue default
+color tree green default
+
+#headers
+color hdrdefault cyan default
+color header green default '^From:'
+
+#index items
+color index brightyellow default ~N
+color index red default ~F
+color index green default ~T
+color index brightred default ~D
+color index white default ~u
+
+# URLs
+color body brightmagenta default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightmagenta default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightmagenta default "www.[-a-z_0-9.]+.(com|edu|org|net)"
+
+# email addresses
+color body brightcyan default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body yellow default "(^| )+(|[&lt;&gt;|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+color body yellow default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[&lt;&gt;|])( |$)+"
+color body yellow default "(^| )\\*[^ ]+\\*( |$)"
+color body yellow default "(^| )_[^ ]+_( |$)"
+color body yellow default "(^| )/[^ ]+/( |$)"

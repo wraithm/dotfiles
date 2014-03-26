@@ -1,0 +1,9 @@
+out_to_console yes
+out_to_x no
+background no
+update_interval 2
+total_run_times 0
+use_spacer none
+
+TEXT
+${scroll 25 $mpd_status: $mpd_smart $mpd_percent% - V$mpd_vol%} C(${cpu cpu1}%|${cpu cpu2}%) M$memperc% D${downspeed wlan0} B${battery_short BAT0} ${time %k:%M}

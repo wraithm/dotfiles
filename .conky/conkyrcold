@@ -1,0 +1,71 @@
+background yes
+alignment top_right
+gap_x 15 
+gap_y 40 
+
+#own_window yes
+own_window no 
+own_window_transparent yes
+own_window_type root
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+#If you want net graphs or CPU graphs, here you go
+#${color #000000}${downspeedgraph wlan0 32,150 104E8B 0077ff} ${color black}${upspeedgraph eth0 32,150 104E8B 0077ff}
+#${color black}${cpugraph 0 32, 350 104E8B 0077ff}
+
+#If you want a battery monityor, here you go. It's already in, you can remove if you want
+#${color #0077ff}Bat1:$color ${battery BAT0} ${color #0077ff}Batt2:$color ${battery BAT1}
+
+cpu_avg_samples 1
+net_avg_samples 1
+
+use_xft yes
+xftfont Bitstream Vera Sans Mono:size=6
+xftalpha 0.8
+
+double_buffer yes
+
+update_interval 1
+
+draw_borders 0
+draw_shades 0
+draw_graph_borders no
+
+use_spacer yes
+no_buffers yes
+
+default_color lightslategrey
+default_shade_color white
+default_outline_color white
+
+TEXT
+${color #0077ff}$nodename     ${alignc}$sysname $kernel ${alignr}$color${time %l:%M:%p}
+$color$hr
+${color #0077ff}Uptime:$color $uptime ${color #0077ff} Load:$color $loadavg
+${color #0077ff}CPU Usage:$color ${cpu}% ${color #0077ff}${cpubar}
+${color #0077ff}RAM Usage:$color $mem/$memmax - $memperc% ${color #0077ff}$membar
+${color #0077ff}Swap Usage:$color $swap/$swapmax - $swapperc% ${color #0077ff}${swapbar}
+${color #0077ff}Procs:$color $processes ${color #0077ff}Running:$color $running_processes ${color #0077ff}
+${color #0077ff}Net Down:$color ${downspeed wlan0} k/s${color #0077ff} ${offset 62}Net Up:$color ${upspeed wlan00} k/s
+${color #0077ff}Wireless:$color ${wireless_essid wlan0}$alignr${color #0077ff}${wireless_link_bar 5,155 wlan0}
+$color$hr
+${color #0077ff}File systems:
+${color #0077ff}/ $alignc$color${fs_used /}/${fs_size /} $alignr${color #0077ff}${fs_bar 5,120 /}
+$color$hr
+${color #0077ff}Battery:
+${color #0077ff}$color ${battery_short BAT0} $alignr${color #0077ff}${battery_bar 5,200 BAT0}
+$color$hr
+${color #0077ff}Music: $color$mpd_status - $mpd_bitrate kbps
+#${mpd_title 15} $alignr$mpd_album
+${mpd_smart 300}
+$mpd_elapsed/$mpd_length $alignr${color #0077ff}${mpd_bar 5,180}
+$color$hr
+${color #0077ff}Top Processes:
+${color #0077ff}Name              PID     CPU%   MEM%
+$color ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+$color ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+$color ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+${color #0077ff}Mem usage
+$color ${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+$color ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+$color ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}

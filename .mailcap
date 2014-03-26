@@ -1,0 +1,9 @@
+text/html; ~/.mutt/view_attachment %s html; needsterminal
+text/html; w3m -I %{charset} -T %t -dump; copiousoutput
+#text/html; elinks -force-html %s
+
+#application/pdf; mupdf %s
+application/pdf; evince %s
+
+#image/*; ~/.mutt/view_attachment %s
+image/*; xv %s

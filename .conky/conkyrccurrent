@@ -1,0 +1,85 @@
+    background no
+    use_xft yes
+    xftfont HandelGotD:size=9
+    xftalpha 0.5
+    update_interval 1
+    total_run_times 0
+    own_window no 
+    own_window_type normal
+    own_window_transparent yes
+    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+    double_buffer yes
+    minimum_size 200 5
+    maximum_width 1024
+    draw_shades no
+    draw_outline no
+    draw_borders no
+    draw_graph_borders no
+   
+    default_color EFE5DB
+    default_shade_color red
+    default_outline_color black
+    alignment top_right
+    gap_x 5
+    gap_y 24
+    no_buffers yes
+    uppercase no
+    cpu_avg_samples 2
+    override_utf8_locale no
+
+    lua_load ~/.conky/rings.lua
+    lua_draw_hook_pre ring_stats
+
+    TEXT
+
+
+
+
+
+
+
+
+    #${alignr 20}Hard Drive
+    #${alignr 20}Hitachi HTS541060G9AT00
+    #${alignr 20}${fs_used /}/${fs_size /} ${fs_free_perc /}% free
+
+
+
+
+
+
+
+
+    #${alignr 240}Wireless Network
+    #${alignr 240}ESSID: ${wireless_essid wlan0}
+    #${alignr 240}${addr wlan0}
+    ${alignr 75}${wireless_link_qual_perc wlan0}%
+
+
+
+
+#300
+    ${alignr 130}CPUs
+    ${alignr 105}${freq}MHz${alignr 5}${fs_used_perc /}%
+    ${alignr 130}Usage ${cpu cpu0}%
+    ${alignr 130}Usage ${cpu cpu1}%
+    #${alignr 300}Fan ${acpifan}
+    ${alignr 5}$memperc%
+
+
+    ${alignr 110}${battery_short BAT0} 
+	#${acpiacadapter} ${battery_percent BAT0}%
+    #${alignr 290}Aux Bat. ${battery_percent C173}%
+
+
+
+
+
+
+
+
+   # ${font Tlwg Typo}${alignr 190}Memory
+    #${alignr 190}SODIMM DDR2 SRAM
+#    ${alignr 190}4GiB total
+    #${alignr 120}$memperc% in use${alignr 30}${time %I:%M:%S}
+    ${alignr 40}${time %k:%M:%S}

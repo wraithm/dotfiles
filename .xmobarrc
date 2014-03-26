@@ -1,0 +1,18 @@
+Config { font = "xft:Terminus:size=10:antialias=true"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , commands = [ Run Wireless "wlan0" ["-t","<essid>"] 10
+                    --, Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run MultiCpu ["-L","5","-H","50","--normal","green","--high","red","-t","c(<total0>%,<total>%,<total2>%,<total3>%)"] 10
+                    , Run Memory ["-t","m<usedratio>%"] 10
+                    , Run Swap ["-t","s<usedratio>%"] 10
+					, Run StdinReader
+                    , Run Date "%k:%M" "date" 10
+					, Run Battery ["-t", "b<left>%"] 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       --, template = "%StdinReader% }{| %multicpu% %memory% %swap% | %eth0%%wlan0wi% | %battery% | %date% " 
+       , template = "%StdinReader% }{| %multicpu% %memory% %swap% | %wlan0wi% | %battery% | %date% " 
+       }
