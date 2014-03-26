@@ -1,6 +1,3 @@
-My dotfiles
-===========
-
 My vim plugins
 --------------
 
