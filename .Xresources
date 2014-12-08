@@ -1,23 +1,36 @@
 ! Colors
+URxvt*depth:            32
 #include "/home/matt/.term/themes/w0ng-hybridtrans"
 
 ! URxvt
 URxvt*dynamicColors:    on
 URxvt*cursorUnderline:  false 
-URxvt*depth:            32
 URxvt*font:             xft:Terminess Powerline:size=9:antialias=true:hinting=true
 URxvt*imLocale:         en_us.UTF-8
 URxvt.iso14755:         off
-URxvt.matcher.button:   1
-URxvt.perl-ext-common:  default,matcher
 URxvt*saveLines:        12000
 URxvt*scrollBar_right:  true
 URxvt*scrollBar:        false
 URxvt*scrollstyle:      plain
 URxvt*termName:         rxvt-unicode-256color
 URxvt.urgentOnBell:     true
-URxvt.url-launcher:     /usr/bin/chromium
-URxvt.underlineURLs:    true
+
+URxvt.keysym.C-0:       command:\033]710;xft:Terminess Powerline:size=9:antialias=true:hinting=true\007
+URxvt.keysym.C-minus:   command:\033]710;xft:Terminess Powerline:size=12:antialias=true:hinting=true\007
+URxvt.keysym.C-equal:   command:\033]710;xft:Terminess Powerline:size=16:antialias=true:hinting=true\007
+
+!URxvt.perl-ext-common:  default,matcher
+!URxvt.url-launcher:     /usr/bin/chromium
+!URxvt.underlineURLs:    true
+!URxvt.matcher.button:   1
+
+!URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+!URxvt.url-select.launcher:  chromium
+!URxvt.url-select.underline: true
+!URxvt.keysym.M-u:           perl:url-select:select_next
+!URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+!URxvt.keysym.M-s:           perl:keyboard-select:search
+
 
 ! Xft
 Xft.lcdfilter:          lcddefault

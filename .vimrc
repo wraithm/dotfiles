@@ -25,15 +25,10 @@ set pastetoggle=<F2>
 nmap :W :w
 nmap :Q :q
 
-au BufEnter *.hs,*.m,*.c,*.h,*.pl,*.cpp,*.cc,*.i,*.ml,*.java,*.js,*.html,*.idr,*.tpl :set nu
+au BufEnter *.hs,*.m,*.c,*.h,*.pl,*.cpp,*.cc,*.i,*.ml,*.java,*.js,*.html,*.idr,*.tpl,*.clj,*.rs :set nu
 nmap <silent> <F11> :set nu! nu?<CR>
 
 let mapleader = ","
-
-noremap <silent> <C-c> <leader>cc<cr>
-vnoremap <silent> <C-c> <leader>cc<cr>
-noremap <silent> <C-x> <leader>cu<cr>
-vnoremap <silent> <C-x> <leader>cu<cr>
 
 " nmap <F5> :tabe 
 " nmap <F6> gT
@@ -53,6 +48,13 @@ map gB :bprev<CR>
 
 "nmap <F4> :make! <BAR> copen<CR><CR>
 "imap <F4> <ESC>:make! <BAR> copen<CR><CR>
+
+" VimRoom
+nnoremap <Leader>vr :VimroomToggle<CR>
+let g:vimroom_width=120
+
+" gundo
+nnoremap <Leader>gu :GundoToggle<CR>
 
 "let g:pathogen_disabled = [ 'syntastic' ]
 call pathogen#infect()
@@ -75,6 +77,11 @@ let javascript_enable_domhtmlcss=1
 "  
 " let g:syntastic_haskell_ghc_mod_args = s:get_cabal_sandbox()
 
+" While hdevtools is out of commission
+let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
+"let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
 " hsimport
 function! FindCabalSandbox()
    let l:sandbox    = finddir('.cabal-sandbox', './;')
@@ -93,20 +100,27 @@ function! FindCabalSandboxPackageConf()
    return glob(FindCabalSandbox() . '*-packages.conf.d')
 endfunction
 
-"let g:hdevtools_options = '-g-isrc -Wall'
-let g:hdevtools_options = '-g-package-conf=' . FindCabalSandboxPackageConf()
+"let g:hdevtools_options = '-g-isrc -g-Wall'
+let g:hdevtools_options = '-g-package-conf=' . FindCabalSandboxPackageConf() . ' -g-Wall'
 let g:hdevtools_src_dir = HaskellSourceDir()
 
-au BufEnter *.hs nnoremap <F3> :HdevtoolsType<CR>
-au BufEnter *.hs nnoremap <silent> <F4> :HdevtoolsClear<CR>
+"au BufEnter *.hs nmap <leader>t :HdevtoolsType<CR>
+"au BufEnter *.hs nmap <leader>nt :HdevtoolsClear<CR>
+
+"let g:ghcimportedfrom_browser = 'chromium'
+"au FileType haskell nnoremap <buffer> <F3> :GhcImportedFromOpenHaddock<CR>
+"au FileType haskell nnoremap <buffer> <F4> :GhcImportedFromEchoUrl<CR>
+
 au BufEnter *.hs nmap <silent> <F5> :silent update <bar> HsimportModule<CR>
 au BufEnter *.hs nmap <silent> <F6> :silent update <bar> HsimportSymbol<CR>
 
-" stylish-haskell
+" haskell bindings
 au BufEnter *.hs nmap <silent> <leader>y :%!stylish-haskell<CR>
+au BufEnter *.hs nmap <silent> <leader>e :Errors<CR>
+au BufEnter *.hs nmap <leader>s :SyntasticToggleMode<CR>
 
 " Look for tags file
-set tags=tags;/
+set tags=tags;/,codex.tags;/
 
 " Tagbar
 let g:tagbar_usearrows = 1
@@ -120,40 +134,45 @@ noremap <silent> <leader>k :NERDTreeToggle<cr>
 "let g:solarized_termcolors=256
 "let g:solarized_termtrans=1
 "colorscheme solarized
+
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
+
 "colors mine
 "colorscheme delek
 "colorscheme jellybeans
+"colorscheme tango-dark
+"colorscheme Tomorrow-Night
 
 " Haskell
-au Bufenter *.hs compiler ghc
-let g:haddock_browser = "/usr/bin/chromium"
-let g:haddock_docdir  = "/usr/share/doc/ghc/html/haddock"
-let g:haddock_indexfiledir = "/home/matt/.vim/"
+" TESTING
+"au Bufenter *.hs compiler ghc
+"let g:haddock_browser = "/usr/bin/chromium"
+"let g:haddock_docdir  = "/usr/share/doc/ghc/html/haddock"
+"let g:haddock_indexfiledir = "/home/matt/.vim/"
+au BufEnter *.hs setlocal omnifunc=necoghc#omnifunc
+" TESTING
 
-" Neocomplcache
-"au BufEnter *.hs let g:neocomplcache_enable_at_startup = 1
-"au BufEnter *.hs let g:neocomplcache_enable_smart_case = 1
-"au BufEnter *.hs let g:neocomplcache_enable_camel_case_completion = 1
-"au BufEnter *.hs let g:neocomplcache_enable_underbar_completion = 1
-"au BufEnter *.hs inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-"au BufEnter *.hs inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"au BufEnter *.hs let g:necoghc_enable_detailed_browse = 1
-au BufEnter *.hs :NeoComplCacheEnable
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+" Neocomplete
+au BufEnter *.hs,*.css,*.html,*.tpl :NeoCompleteEnable
+au BufEnter *.hs let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case_completion = 1
+let g:neocomplete#enable_underbar_completion = 1
+inoremap <expr><CR> neocomplete#smart_close_popup() . "\<CR>"
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:necoghc_enable_detailed_browse = 1
 
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+au BufEnter *.tpl setlocal omnifunc=htmlcomplete#CompleteTags
+
+" GhcMod typechecking
 let g:ghcmod_type_highlight = 'Visual'
 au BufEnter *.hs nmap <leader>t :set cmdheight=2<CR>:GhcModType<CR>
 au BufEnter *.hs nmap <leader>nt :GhcModTypeClear<CR>:set cmdheight=1<CR>
 
 au BufEnter *.hs,*.lhs set cscopeprg=hscope
-
 
 " Java
 au BufEnter *.java set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
@@ -166,7 +185,7 @@ au BufEnter *.java set makeprg=ant\ -find\ build.xml
 "au BufEnter *.java,*.c,*.cpp,*.cc,*.h inoremap {} {}
 
 let filetype_i = "nasm"
-"au BufEnter *.idr set syntax=idris
+au BufEnter *.idr set syntax=haskell
 au BufEnter *.tpl set syntax=html
 
 augroup MUTT
@@ -218,9 +237,25 @@ au BufRead,BufNewFile *.c,*.h,*.cc call HighlightOver80()
 " airline
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 let g:bufferline_echo = 0
 
 " VimShell
 let g:vimshell_prompt = "$ "
+
+" Ag - the silver searcher
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
+
+" vim2hs
+"let g:haskell_conceal = 0

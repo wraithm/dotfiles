@@ -285,10 +285,7 @@ settings = {
     user_name = "matt";
     nick = "WraithM";
   };
-  "fe-text" = {
-    actlist_sort = "refnum";
-    term_force_colors = "yes";
-  };
+  "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
   "fe-common/core" = {
     theme = "beastie";
     timestamps = "no";
@@ -298,6 +295,8 @@ settings = {
     use_msgs_window = "yes";
     autoclose_windows = "no";
     reuse_unused_windows = "yes";
+    beep_msg_level = "MSGS NOTICES INVITES DCC DCCMSGS HILIGHT";
+    bell_beeps = "yes";
   };
 };
 
@@ -313,5 +312,8 @@ ignores = (
   { level = "JOINS PARTS QUITS NICKS"; channels = ( "#agda" ); },
   { level = "JOINS PARTS QUITS NICKS"; channels = ( "##hott" ); },
   { level = "JOINS PARTS QUITS NICKS"; channels = ( "#ocaml" ); },
-  { level = "JOINS PARTS QUITS NICKS"; channels = ( "#snapframework" ); }
+  {
+    level = "JOINS PARTS QUITS NICKS";
+    channels = ( "#snapframework" );
+  }
 );

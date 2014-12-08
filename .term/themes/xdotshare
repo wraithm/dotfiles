@@ -1,0 +1,47 @@
+!
+! xdotshare
+!
+! vim: set ft=xdefaults:
+
+URxvt.fading: 30
+!URxvt.fadeColor: rgba:0000/0000/0fff/cccc
+
+*background: [95]#151515
+*foreground: #D7D0C7
+
+URxvt*borderColor:  #151515
+URxvt*colorBD:      #FFFFFF
+URxvt*cursorColor:  #FF8939
+URxvt*cursorColor2: #151515
+
+!BLK 
+*color0:     #101010
+*color8:     #404040
+
+!WHT
+*color7:     #DDDDDD
+*color15:    #DDDDDD
+
+!RED
+*color1:     #E84F4F
+*color9:     #D23D3D
+
+!GRN
+*color2:     #B8D68C
+*color10:    #A0CF5D
+
+!BLU
+*color4:     #7DC1CF
+*color12:    #4E9FB1
+
+!YEL
+*color3:     #E1AA5D
+*color11:    #F39D21
+
+!CYN
+*color6:     #6D878D
+*color14:    #42717B
+
+!MAG
+*color5:     #9B64FB
+*color13:    #8542FF

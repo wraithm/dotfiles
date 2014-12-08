@@ -1,3 +1,5 @@
+unset GREP_OPTIONS
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -32,9 +34,12 @@ ZSH_THEME="mygentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git perl history-substring-search battery archlinux)
+plugins=(git perl history-substring-search battery archlinux ssh-agent cabal)
+
+#zstyle :omz:plugins:ssh-agent identities id_rsa mwawskey.pem
 
 source $ZSH/oh-my-zsh.sh
+
 
 # Customize to your needs...
 
@@ -50,20 +55,39 @@ alias systemctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias netctl-auto='sudo netctl-auto'
 alias matlab='matlab -nosplash -nodesktop'
-alias open='evince'
+#alias open='evince'
 #alias open='apvlv'
+alias open='mupdf'
 alias pip='sudo pip2'
 alias ocaml='rlwrap ocaml "$@"'
-alias cabal='/home/matt/.cabal/bin/cabal'
+#alias cabal='/home/matt/.cabal/bin/cabal'
 alias ant='ant -find build.xml'
+alias grep='ag'
+alias ghci-core="ghci -ddump-simpl -dsuppress-idinfo \
+    -dsuppress-coercions -dsuppress-type-applications \ 
+    -dsuppress-uniques -dsuppress-module-prefixes"
 
 PATH=$PATH:/usr/local/MATLAB/R2011a/bin/:$HOME/.cabal/bin
 #PATH=$PATH:$HOME/.cabal/bin
 export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vim"
+export TZ="America/Chicago"
 
 # OPAM configuration
-. /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+#. /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 #Syntax highlighting
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# Autocomplete GHC 7.8 commands
+# _ghc()
+# {
+#     local envs=`ghc --show-options`
+#     # get the word currently being completed
+#    local cur=${COMP_WORDS[$COMP_CWORD]}
+# 
+#     # the resulting completions should be put into this array
+#     COMPREPLY=( $( compgen -W "$envs" -- $cur ) )
+# }
+# complete -F _ghc -o default ghc

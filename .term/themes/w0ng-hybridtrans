@@ -15,10 +15,10 @@
 #define t_blue #81A2BE
 #define t_purple #B294BB
 
-URxvt.fading: 30
+URxvt.fading: 15
 URxvt.fadeColor: rgba:0000/0000/0fff/cccc
 
-*background: t_background
+URxvt*background: t_background
 *foreground: t_foreground
 ! black
 *color0: t_current_line

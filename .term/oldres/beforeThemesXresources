@@ -1,0 +1,74 @@
+! Test
+!URxvt.internalBorder: 7
+
+! This one is pretty transparent
+!URxvt*background: rgba:0000/0000/0fff/cccc
+! This is my normal color without any transparency
+!URxvt*background: #1E1E1E
+! 95 opacity of my normal color
+URxvt*background: [95]#1E1E1E
+
+URxvt*foreground: #A8A8A8
+!URxvt*foreground: #839396
+URxvt*fading: 30
+URxvt*fadeColor: rgba:0000/0000/0fff/cccc
+URxvt*cursorColor: #93A1A1
+URxvt*color0: #073642
+!URxvt*color0: #000000
+
+
+!OLD STUFF
+!URxvt*background: rgba:0000/0000/0fff/cccc
+!URxvt*foreground: #A8A8A8
+
+!URxvt*color0: #000000
+URxvt*color1: #A80000
+URxvt*color2: #00A800
+URxvt*color3: #A85400
+URxvt*color4: #0000A8
+URxvt*color5: #A800A8
+URxvt*color6: #00A8A8
+URxvt*color7: #A8A8A8
+URxvt*color8: #545054
+URxvt*color9: #F85450
+URxvt*color10: #50FC50
+URxvt*color11: #F2FC50
+URxvt*color12: #5054F8
+URxvt*color13: #F854F8
+URxvt*color14: #50FCF8
+URxvt*color15: #F8FCF8
+
+URxvt*dynamicColors: on
+URxvt*cursorUnderline: false 
+URxvt*depth: 32
+URxvt*font:             xft:Terminess Powerline:size=9:antialias=true:hinting=true
+!URxvt*font:             xft:Terminus:size=9:antialias=true:hinting=true
+!URxvt*font:             xft:OhSnap:size=10:antialias=true:hinting=true
+!URxvt*boldFont:         xft:Terminus:size=9:antialias=true:hinting=true
+!URxvt*boldItalicFont:   xft:Terminus:size=9:antialias=true:hinting=true
+!URxvt*italicFont:       xft:Terminus:size=9:antialias=true:hinting=true
+URxvt*imLocale: en_us.UTF-8
+URxvt.iso14755: off
+URxvt.matcher.button: 1
+!URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt.perl-ext-common: default,matcher
+URxvt*saveLines: 12000
+URxvt*scrollBar_right: true
+!URxvt*scrollBar: true
+URxvt*scrollBar: false
+URxvt*scrollstyle: plain
+URxvt*termName:  rxvt-unicode-256color
+URxvt.urgentOnBell: true
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.underlineURLs: true
+
+Xft.lcdfilter: lcddefault
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+
+! dzen2
+! dzen2*font:             xft:Terminus:size=9:antialias=true:hinting=true
+dzen2*font:             xft:OhSnap:size=10:antialias=true:hinting=true

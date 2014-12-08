@@ -267,6 +267,7 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
 -- main ----------------------------------------------------------------------
 
+main :: IO ()
 main = do
   xmproc <- spawnPipe "xmobar -x 0" 
   xmproc2 <- spawnPipe "xmobar -x 1" 
@@ -286,7 +287,7 @@ main = do
                     hPutStrLn xmproc msg
                     hPutStrLn xmproc2 msg
                , ppTitle = xmobarColor "#81aeff" "" . shorten 145
-               , ppUrgent = xmobarColor "red" "" . wrap " " " "
+               , ppUrgent = xmobarColor "red" "" . wrap " " " " . xmobarStrip
                , ppCurrent = xmobarColor "white" "#1c488a" . wrap " " " "
                , ppVisible = xmobarColor "#81aeff" "" . wrap " " " "
                , ppHidden = wrap " " " "

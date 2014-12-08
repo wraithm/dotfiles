@@ -1,0 +1,48 @@
+! font settings --------------------------------------------------------------
+!Xft.autohint: true
+!Xft.antialias: true
+!Xft.hinting: true
+!Xft.hintstyle: hintslight
+!Xft.dpi: 96
+!Xft.rgba: rgb
+!Xft.lcdfilter: lcddefault
+! FONTS
+!URxvt.font: eldusrtyFTCBasic Demi:pixelsize=9
+!URxvt.font: xft:Tewi:antialias=true
+!URxvt.boldFont: xft:Tewi:antialias=true
+ 
+! urxvt conf E7201B-----------------------------------------------------------------
+URxvt.foreground: #b8b8b8                     
+!#61778D
+URxvt.background: [95]#222222                
+!#021B21
+URxvt.cursorColor: #b8b8b8                     
+URxvt.fading: 30
+URxvt.fadeColor: rgba:0000/0000/0fff/cccc
+ 
+!black
+URxvt.color0:#1a1a1a
+URxvt.color8:#404040
+!red
+URxvt.color1:#F35656
+URxvt.color9:#ea8484
+!green
+URxvt.color2:#87af5f
+URxvt.color10:#c7f09f
+!yellow
+URxvt.color3:#ffaf5f
+URxvt.color11:#ffcc9a
+!blue
+URxvt.color4:#87afd7
+URxvt.color12:#a5caef
+!magenta
+URxvt.color5:#8787af
+URxvt.color13:#a6a6de
+!cyan
+URxvt.color6:#5f8787
+URxvt.color14:#69b2b2
+!white
+URxvt.color7:#808080
+URxvt.color15:#d7d7d7
+ 
+

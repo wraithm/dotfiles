@@ -51,9 +51,9 @@ set menu_scroll
 set ispell="aspell -e -c"
 
 #colors
-#color status default blue 
-#color indicator black green
-source ~/.mutt/colors
+color status default blue 
+color indicator black green
+#source ~/.mutt/colors
 
 #sidebar stuff
 set sidebar_width=20
@@ -90,3 +90,6 @@ macro index,pager ga "<change-folder>=[Gmail]/All<quote-char> Mail<enter>" "Go t
 macro index,pager gl "<change-folder>?" "Go to 'Label'"
 macro index,pager e "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
 bind  index,pager a  group-reply    #Reply all
+
+# PGP
+source ~/.mutt/gpg.rc

@@ -4,6 +4,8 @@ import Control.Monad
 import Data.List
 import Data.Monoid
 
+:set -XOverloadedStrings
+
 :set -fno-warn-unused-imports
 :def hlint const . return $ ":! hlint \"src\""
 :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
