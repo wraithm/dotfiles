@@ -34,7 +34,7 @@ ZSH_THEME="mygentoo"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git perl history-substring-search battery archlinux ssh-agent cabal)
+plugins=(git perl history-substring-search battery archlinux ssh-agent cabal mercurial)
 
 #zstyle :omz:plugins:ssh-agent identities id_rsa mwawskey.pem
 
@@ -51,6 +51,7 @@ alias ls='ls --color=auto -F'
 alias ncmpc='ncmpcpp'
 alias scp='noglob scp'
 alias pacman='sudo pacman'
+alias ghci='stack ghci'
 alias systemctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias netctl-auto='sudo netctl-auto'
@@ -63,18 +64,22 @@ alias ocaml='rlwrap ocaml "$@"'
 #alias cabal='/home/matt/.cabal/bin/cabal'
 alias ant='ant -find build.xml'
 alias grep='ag'
+alias emacs='emacs -nw'
+alias updatevim='cd $HOME/.vim/bundle; for file in $(ls); do cd $file; pwd; git pull origin; cd ..; done'
 alias ghci-core="ghci -ddump-simpl -dsuppress-idinfo \
     -dsuppress-coercions -dsuppress-type-applications \ 
     -dsuppress-uniques -dsuppress-module-prefixes"
+alias gtypist='gtypist -w'
 
-PATH=$PATH:/usr/local/MATLAB/R2011a/bin/:$HOME/.cabal/bin
+PATH=$PATH:/usr/local/MATLAB/R2011a/bin/:$HOME/.cabal/bin:$HOME/.local/bin:/home/matt/.stack/programs/x86_64-linux/ghc-7.10.3/bin
 #PATH=$PATH:$HOME/.cabal/bin
 export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vim"
 export TZ="America/Chicago"
 
 # OPAM configuration
-#. /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+/home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+eval `opam config env`
 
 #Syntax highlighting
 #source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

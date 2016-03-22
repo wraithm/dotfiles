@@ -1,3 +1,5 @@
+:set +c
+
 import Control.Applicative
 import Control.Monad
 

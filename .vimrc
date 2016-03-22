@@ -20,6 +20,7 @@ set backspace=2
 set foldmethod=indent
 set nofoldenable
 set pastetoggle=<F2>
+set mouse=a
 "set cmdheight=2
 
 nmap :W :w
@@ -82,6 +83,9 @@ let g:syntastic_haskell_checkers = ['ghc_mod', 'hlint']
 "let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
+" C++
+let g:syntastic_cpp_compiler_options = '-std=c++11'
+
 " hsimport
 function! FindCabalSandbox()
    let l:sandbox    = finddir('.cabal-sandbox', './;')
@@ -101,7 +105,8 @@ function! FindCabalSandboxPackageConf()
 endfunction
 
 "let g:hdevtools_options = '-g-isrc -g-Wall'
-let g:hdevtools_options = '-g-package-conf=' . FindCabalSandboxPackageConf() . ' -g-Wall'
+"let g:hdevtools_options = '-g-package-conf=' . FindCabalSandboxPackageConf() . ' -g-Wall'
+let g:syntastic_haskell_hdevtools_args = '-g-package-conf=' . FindCabalSandboxPackageConf() . ' -g-Wall'
 let g:hdevtools_src_dir = HaskellSourceDir()
 
 "au BufEnter *.hs nmap <leader>t :HdevtoolsType<CR>
@@ -231,7 +236,7 @@ endfunction
 
 au BufRead,BufNewFile *.ml,*.mll call HighlightOver80()
 
-au BufRead,BufNewFile *.c,*.h,*.cc set tw=80
+au BufRead,BufNewFile *.c,*.h,*.cc,*.md set tw=80
 au BufRead,BufNewFile *.c,*.h,*.cc call HighlightOver80()
 
 " airline
@@ -259,3 +264,8 @@ endif
 
 " vim2hs
 "let g:haskell_conceal = 0
+
+" Merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/ocp-indent/vim"
