@@ -1,7 +1,7 @@
 [ui]
-username = Matthew Wraith <whomstever@email.com>
+username = Matthew Wraith <wraithm@gmail.com>
 merge = emacsclient
-editor = emacsclient -ct -a vim
+editor = emacsclient -ct -a nvim
 
 [extensions]
 strip =
