@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mwraith/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -94,8 +94,9 @@ LSCOLORS=exfxcxdxbxegedabagacad;
 alias scp='noglob scp'
 alias ghci='stack ghci'
 alias ocaml='rlwrap ocaml "$@"'
+alias ant='ant -find build.xml'
 alias grep='ag'
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+alias emacs='/usr/local/bin/emacs -nw'
 alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
     -dsuppress-coercions -dsuppress-type-applications \
     -dsuppress-uniques -dsuppress-module-prefixes"'
@@ -106,15 +107,15 @@ alias vi='nvim'
 
 alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
 
-PATH=/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin
-PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+PATH=/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim"
 VISUAL="/usr/local/bin/nvim"
 
 TZ="America/Chicago"
 
 # OPAM configuration
-# /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`
 
 source ~/.zshrc.other
