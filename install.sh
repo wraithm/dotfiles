@@ -9,4 +9,4 @@ else
     pkgs="${macos_pkgs[@]}"
 fi
 
-stow $pkgs
+stow --no-folding $pkgs
