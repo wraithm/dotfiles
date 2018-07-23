@@ -1,4 +1,4 @@
-:set +c
+-- :set +c
 
 import Control.Applicative
 import Control.Monad
@@ -12,5 +12,7 @@ import Data.Monoid
 :def hlint const . return $ ":! hlint \"src\""
 :def hoogle \s -> return $ ":! hoogle --count=15 \"" ++ s ++ "\""
 :def pl \s -> return $ ":! pointfree \"" ++ s ++ "\""
+:def rr (\a -> return $ unlines [":r", a])
 
 :set prompt "ghci> "
+:set editor /usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim
