@@ -114,5 +114,7 @@ VISUAL="/usr/local/bin/nvim"
 TZ="America/Chicago"
 
 # OPAM configuration
-/home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-eval `opam config env`
+# /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# eval `opam config env`
+
+source ~/.zshrc.other
