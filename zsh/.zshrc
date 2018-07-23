@@ -1,98 +1,118 @@
-unset GREP_OPTIONS
+# IF you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/mwraith/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="mygentoo"
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="hggentoo"
 
-# Powerline theme
-#ZSH_THEME="agnoster"
-#DEFAULT_USER="matt"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# Set to this to use case-sensitive completion
+# Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
+# Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git perl history-substring-search battery archlinux ssh-agent cabal mercurial)
-
-#zstyle :omz:plugins:ssh-agent identities id_rsa mwawskey.pem
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
+# plugins=(ssh-agent history-substring-search stack man sudo terraform vagrant vault)
+plugins=(history-substring-search stack man sudo terraform vagrant vault)
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
 
-# Customize to your needs...
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 unsetopt correctall
-#This is also an option
-#alias sudo='nocorrect sudo'
 
-alias ls='ls --color=auto -F'
-alias ncmpc='ncmpcpp'
+alias ls='ls -GF'
+LSCOLORS=exfxcxdxbxegedabagacad;
+
 alias scp='noglob scp'
-alias pacman='sudo pacman'
 alias ghci='stack ghci'
-alias systemctl='sudo systemctl'
-alias netctl='sudo netctl'
-alias netctl-auto='sudo netctl-auto'
-alias matlab='matlab -nosplash -nodesktop'
-#alias open='evince'
-#alias open='apvlv'
-alias open='mupdf'
-alias pip='sudo pip2'
 alias ocaml='rlwrap ocaml "$@"'
-#alias cabal='/home/matt/.cabal/bin/cabal'
-alias ant='ant -find build.xml'
 alias grep='ag'
-alias emacs='emacs -nw'
-alias updatevim='cd $HOME/.vim/bundle; for file in $(ls); do cd $file; pwd; git pull origin; cd ..; done'
-alias ghci-core="ghci -ddump-simpl -dsuppress-idinfo \
-    -dsuppress-coercions -dsuppress-type-applications \ 
-    -dsuppress-uniques -dsuppress-module-prefixes"
-alias gtypist='gtypist -w'
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
+    -dsuppress-coercions -dsuppress-type-applications \
+    -dsuppress-uniques -dsuppress-module-prefixes"'
+alias ec='emacsclient -ct'
+alias ecf='emacsclient -c -n'
+alias vim='emacsclient -ct -a /usr/local/bin/nvim'
+alias vi='nvim'
 
-PATH=$PATH:/usr/local/MATLAB/R2011a/bin/:$HOME/.cabal/bin:$HOME/.local/bin:/home/matt/.stack/programs/x86_64-linux/ghc-7.10.3/bin
-#PATH=$PATH:$HOME/.cabal/bin
-export EDITOR="/usr/bin/vim"
-export VISUAL="/usr/bin/vim"
-export TZ="America/Chicago"
+alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
+
+PATH=/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin
+PYTHONPATH="/usr/local/lib/python2.7/site-packages"
+EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim"
+VISUAL="/usr/local/bin/nvim"
+
+TZ="America/Chicago"
 
 # OPAM configuration
 /home/matt/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 eval `opam config env`
-
-#Syntax highlighting
-#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# Autocomplete GHC 7.8 commands
-# _ghc()
-# {
-#     local envs=`ghc --show-options`
-#     # get the word currently being completed
-#    local cur=${COMP_WORDS[$COMP_CWORD]}
-# 
-#     # the resulting completions should be put into this array
-#     COMPREPLY=( $( compgen -W "$envs" -- $cur ) )
-# }
-# complete -F _ghc -o default ghc
