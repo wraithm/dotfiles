@@ -23,6 +23,8 @@ set pastetoggle=<F2>
 set mouse=a
 "set cmdheight=2
 
+inoremap jk <Esc>
+
 nmap :W :w
 nmap :Q :q
 
