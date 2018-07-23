@@ -1,12 +1,12 @@
 [ui]
-username = Matthew Wraith <whomever@email.com>
+username = Matthew Wraith <whomstever@email.com>
 merge = emacsclient
 editor = emacsclient -ct -a vim
 
 [extensions]
 strip =
 histedit =
-shelve =
+# shelve =
 # rebase =
 graphlog =
 bookmarks =
@@ -21,6 +21,7 @@ churn =
 convert =
 notify =
 progress =
+hgext.bookmarks =
 hggit =
 
 [defaults]
