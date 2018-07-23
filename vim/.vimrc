@@ -37,3 +37,24 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 noremap <leader>w :w<CR>
+noremap <leader>f :fin
+noremap <leader>k :bdelete<CR>
+noremap <leader>n :bnext<CR>
+noremap <leader>p :bprev<CR>
+noremap <leader>b :ls<CR>
+
+" Vim-Plug
+call plug#begin('~/.vim/plugged')
+
+Plug 'ndmitchell/ghcid'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+
+call plug#end()
+
+" ale config
+let g:ale_set_quickfix = 1
+
+let g:ale_linters = {
+\   'haskell': ['hlint', 'stack-ghc'],
+\}
