@@ -107,7 +107,7 @@ alias vi='nvim'
 
 alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
 
-PATH=/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim"
 VISUAL="/usr/local/bin/nvim"
