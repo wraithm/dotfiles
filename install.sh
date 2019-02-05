@@ -1,7 +1,7 @@
 #!/bin/bash
 
 linux_pkgs=(zsh vim ghc psql hg git irc mutt term xmonad conky)
-macos_pkgs=(zsh vim ghc psql hg)
+macos_pkgs=(zsh vim ghc psql hg macos)
 
 if [[ "$1" == "linux" ]]; then
     pkgs="${linux_pkgs[@]}"
