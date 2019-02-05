@@ -6,6 +6,15 @@ import Control.Monad
 import Data.List
 import Data.Monoid
 
+-- import qualified Data.ByteString as BS
+-- import qualified Data.ByteString.Lazy as LBS
+-- import Data.ByteString.Builder as BB
+-- import Data.ByteString.Base16 as B16
+-- import Data.ByteString.Base16.Lazy as L16
+
+-- let encodeHex' = B16.encode
+-- let encodeHex = L16.encode
+
 :set -XOverloadedStrings
 
 :set -fno-warn-unused-imports
