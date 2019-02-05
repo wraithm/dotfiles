@@ -14,6 +14,7 @@
 [alias]
     co = checkout
     br = branch
+    glog = log --graph
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
