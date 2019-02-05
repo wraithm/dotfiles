@@ -52,8 +52,7 @@ ZSH_THEME="hggentoo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
-# plugins=(ssh-agent history-substring-search stack man sudo terraform vagrant vault)
-plugins=(history-substring-search stack man sudo terraform vagrant vault)
+plugins=(ssh-agent history-substring-search stack man sudo terraform vagrant vault)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,15 +101,16 @@ alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
     -dsuppress-uniques -dsuppress-module-prefixes"'
 alias ec='emacsclient -ct'
 alias ecf='emacsclient -c -n'
-alias vim='emacsclient -ct -a /usr/local/bin/nvim'
-alias vi='nvim'
+alias vim='emacsclient -ct -a /usr/local/bin/vim'
+alias vi='/usr/local/bin/vim'
+alias btc='bitcoin-cli -regtest'
 
 alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
 
-PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
-EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim"
-VISUAL="/usr/local/bin/nvim"
+EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim"
+VISUAL="/usr/local/bin/vim"
 
 TZ="America/Chicago"
 
