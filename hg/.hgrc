@@ -23,6 +23,7 @@ notify =
 progress =
 hgext.bookmarks =
 hggit =
+patchbomb =
 
 [defaults]
 #update = -c
