@@ -24,4 +24,4 @@ import Data.Monoid
 :def rr (\a -> return $ unlines [":r", a])
 
 :set prompt "ghci> "
-:set editor /usr/local/bin/emacsclient -ct -a /usr/local/bin/nvim
+:set editor /usr/local/bin/emacsclient -ct -a /usr/local/bin/vim

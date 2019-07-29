@@ -116,13 +116,13 @@ servers = (
   { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
   { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
   { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { 
+  {
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
   },
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { 
+  {
     address = "irc.quakenet.org";
     chatnet = "QuakeNet";
     port = "6667";
@@ -144,6 +144,14 @@ servers = (
     use_ssl = "yes";
     ssl_verify = "yes";
     autoconnect = "yes";
+  },
+  {
+    address = "znc.wraithm.io";
+    chatnet = "wraithnet";
+    port = "5000";
+    password = "<user_name>/freenode:<password>";
+    use_tls = "yes";
+    tls_verify = "no";
   }
 );
 
@@ -155,7 +163,7 @@ chatnets = {
     max_whois = "4";
     max_query_chans = "5";
   };
-  EFNet = { 
+  EFNet = {
     type = "IRC";
     max_kicks = "4";
     max_msgs = "3";
@@ -179,7 +187,7 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  OFTC = { 
+  OFTC = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
@@ -197,7 +205,7 @@ chatnets = {
     max_msgs = "3";
     max_whois = "30";
   };
-  Rizon = { 
+  Rizon = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "3";
@@ -211,6 +219,7 @@ chatnets = {
   };
   SILC = { type = "SILC"; };
   freenode = { type = "IRC"; };
+  wraithnet = { type = "IRC"; };
 };
 
 channels = (
@@ -282,8 +291,8 @@ aliases = {
 settings = {
   core = {
     real_name = "Matthew Wraith";
-    user_name = "matt";
-    nick = "WraithM";
+    user_name = "wraithm/freenode";
+    nick = "wraithm";
   };
   "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
   "fe-common/core" = {
@@ -302,7 +311,7 @@ settings = {
 
 ignores = (
   { level = "JOINS PARTS QUITS NICKS"; channels = ( "#haskell" ); },
-  { 
+  {
     level = "JOINS PARTS QUITS NICKS";
     channels = ( "#haskell-lens" );
   },

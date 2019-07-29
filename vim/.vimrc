@@ -51,6 +51,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ndmitchell/ghcid'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
