@@ -52,7 +52,7 @@ ZSH_THEME="hggentoo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
-plugins=(history-substring-search stack man sudo terraform vagrant vault)
+plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,7 +94,6 @@ alias scp='noglob scp'
 alias ghci='stack ghci'
 alias ocaml='rlwrap ocaml "$@"'
 alias ant='ant -find build.xml'
-alias grep='ag'
 alias emacs='/usr/local/bin/emacs -nw'
 alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
     -dsuppress-coercions -dsuppress-type-applications \
@@ -107,10 +106,14 @@ alias btc='bitcoin-cli -regtest'
 
 alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
 
-PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
-PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/src/Other/arcanist/bin
+PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim"
-VISUAL="/usr/local/bin/vim"
+VISUAL=/usr/local/bin/vim
+
+PATH=/usr/local/opt/llvm@6/bin:$PATH
+LDFLAGS=-L/usr/local/opt/llvm@6/lib
+CPPFLAGS=-I/usr/local/opt/llvm@6/include
 
 TZ="America/Chicago"
 
@@ -118,4 +121,8 @@ TZ="America/Chicago"
 # $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`
 
+source $HOME/src/Other/arcanist/resources/shell/bash-completion
+
 source ~/.zshrc.other
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
