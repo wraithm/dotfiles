@@ -1,6 +1,9 @@
 {
-    "~d" = "deleteWordForward:";
-    "^w" = "deleteWordBackward:";
-    "~f" = "moveWordForward:";
-    "~b" = "moveWordBackward:";
+    "~b" = moveWordBackward:;
+    "~f" = moveWordForward:;
+    "~d" = deleteWordForward:;
+    "^w" = deleteWordBackward:;
+    "~l" = (moveWordForwardAndModifySelection:, lowercaseWord:);
+    "~u" = (moveWordForwardAndModifySelection:, uppercaseWord:);
+    "~c" = (moveWordForwardAndModifySelection:, capitalizeWord:);
 }
