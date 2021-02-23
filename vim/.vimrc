@@ -39,7 +39,8 @@ noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
 noremap <leader>w :w<CR>
-noremap <leader>f :find 
+noremap <leader>fs :w<CR>
+" noremap <leader>ff :find 
 noremap <leader>k :bdelete<CR>
 noremap <leader>n :bnext<CR>
 noremap <leader>p :bprev<CR>
@@ -53,6 +54,7 @@ Plug 'w0rp/ale'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'aiya000/vim-ghcid-quickfix'
 
 call plug#end()
 

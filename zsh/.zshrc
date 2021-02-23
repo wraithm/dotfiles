@@ -7,7 +7,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="hggentoo"
+# ZSH_THEME="hggentoo"
+ZSH_THEME="gentoo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -98,18 +99,18 @@ alias emacs='/usr/local/bin/emacs -nw'
 alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
     -dsuppress-coercions -dsuppress-type-applications \
     -dsuppress-uniques -dsuppress-module-prefixes"'
-alias ec='emacsclient -ct'
-alias ecf='emacsclient -c -n'
-alias vim='emacsclient -ct -a /usr/local/bin/vim'
+alias ec='/usr/local/bin/emacsclient -ct'
+alias ecf='/usr/local/bin/emacsclient -c -n'
+alias vim='/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
 alias btc='bitcoin-cli -regtest'
 
 alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; fi"
 
-PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/src/Other/arcanist/bin
-PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim"
-VISUAL=/usr/local/bin/vim
+PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+# export EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim"
+export EDITOR="/usr/local/bin/emacs -nw"
+export VISUAL=/usr/local/bin/vim
 
 PATH=/usr/local/opt/llvm@6/bin:$PATH
 LDFLAGS=-L/usr/local/opt/llvm@6/lib
@@ -121,8 +122,23 @@ TZ="America/Chicago"
 # $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`
 
-source $HOME/src/Other/arcanist/resources/shell/bash-completion
-
 source ~/.zshrc.other
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+hash -d btnl=~/src/Bitnomial/bitnomial
+
+export VAULT_ADDR=http://127.0.0.1:8200
+
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+source /Users/mwraith/.local/venv/bin/activate
+
+
+ulimit -n 20000
+
+
+export REPORTTIME=2

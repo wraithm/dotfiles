@@ -3,8 +3,9 @@ function prompt_char {
 }
 
 function hg_info {
-    # hg_id=`hg id -n -i -t -B 2>/dev/null`
-    hg_id=`hg id -n -i -B 2>/dev/null`
+    hg_id=`hg id -n -i -t -B 2>/dev/null`
+    # hg_id=`hg id -n -i -B 2>/dev/null`
+    # hg_id=`hg id -r . -T "{separate(' ', node|short, rev, topic, tags, activebookmark)}" 2>/dev/null`
 
     if [ $? -eq 0 ]; then
         if [[ ! $hg_id =~ ^000000000000 ]]; then

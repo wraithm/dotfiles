@@ -15,7 +15,7 @@ import Data.Monoid
 -- let encodeHex' = B16.encode
 -- let encodeHex = L16.encode
 
-:set -XOverloadedStrings
+-- :set -XOverloadedStrings
 
 :set -fno-warn-unused-imports
 :def hlint const . return $ ":! hlint \"src\""
