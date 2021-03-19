@@ -1,12 +1,24 @@
 #!/bin/bash
 
 linux_pkgs=(zsh vim ghc psql hg git irc mutt term xmonad conky)
-macos_pkgs=(zsh vim ghc psql hg macos)
+macos_pkgs=(zsh vim ghc psql macos)
 
-if [[ "$1" == "linux" ]]; then
-    pkgs="${linux_pkgs[@]}"
-else
-    pkgs="${macos_pkgs[@]}"
-fi
+work_linux_pkgs=(workzsh vim ghc psql workgit)
+work_macos_pkgs=(zsh vim ghc psql macos workgit)
 
-stow --no-folding $pkgs
+case "$1" in
+    "linux")
+        pkgs="${linux_pkgs[*]}"
+        ;;
+    "worklinux")
+        pkgs="${work_linux_pkgs[*]}"
+        ;;
+    "macos")
+        pkgs="${macos_pkgs[*]}"
+        ;;
+    "workmacos")
+        pkgs="${work_macos_pkgs[*]}"
+        ;;
+esac
+
+stow --no-folding "$pkgs"
