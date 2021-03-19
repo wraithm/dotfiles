@@ -8,16 +8,16 @@ work_macos_pkgs=(zsh vim ghc psql macos workgit)
 
 case "$1" in
     "linux")
-        pkgs="${linux_pkgs[*]}"
+        pkgs="${linux_pkgs[@]}"
         ;;
     "worklinux")
-        pkgs="${work_linux_pkgs[*]}"
+        pkgs="${work_linux_pkgs[@]}"
         ;;
     "macos")
-        pkgs="${macos_pkgs[*]}"
+        pkgs="${macos_pkgs[@]}"
         ;;
     "workmacos")
-        pkgs="${work_macos_pkgs[*]}"
+        pkgs="${work_macos_pkgs[@]}"
         ;;
 esac
 
