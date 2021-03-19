@@ -3,7 +3,7 @@
 linux_pkgs=(zsh vim ghc psql hg git irc mutt term xmonad conky)
 macos_pkgs=(zsh vim ghc psql macos)
 
-work_linux_pkgs=(workzsh vim ghc psql workgit)
+work_linux_pkgs=(workzsh vim ghc psql workgit gnome)
 work_macos_pkgs=(zsh vim ghc psql macos workgit)
 
 case "$1" in
