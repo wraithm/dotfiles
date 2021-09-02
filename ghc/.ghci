@@ -6,6 +6,7 @@ import Control.Monad
 import Data.List
 import Data.Monoid
 
+
 -- import qualified Data.ByteString as BS
 -- import qualified Data.ByteString.Lazy as LBS
 -- import Data.ByteString.Builder as BB
@@ -15,7 +16,7 @@ import Data.Monoid
 -- let encodeHex' = B16.encode
 -- let encodeHex = L16.encode
 
--- :set -XOverloadedStrings
+:seti -w -XOverloadedStrings
 
 :set -fno-warn-unused-imports
 :def hlint const . return $ ":! hlint \"src\""
@@ -24,4 +25,19 @@ import Data.Monoid
 :def rr (\a -> return $ unlines [":r", a])
 
 :set prompt "ghci> "
-:set editor /usr/local/bin/emacsclient -ct -a /usr/local/bin/vim
+:set editor /snap/bin/emacsclient -ct -a /usr/local/bin/vim
+
+-- to install: stack install pretty-show hscolour
+-- Colourise ghci output (use :nopretty to disable)
+:set -package process
+:{
+:def! pretty \_ -> return $ unlines [
+  ":unset +t",
+  "pp x = putStrLn =<< catch' (rp \"HsColour\" []) =<< catch' (rp \"ppsh\" []) (show x) where { rp = System.Process.readProcess; catch' f y = Control.Exception.catch (f y) (h y); h :: String -> Control.Exception.SomeException -> IO String; h z _ = return z }",
+  ":seti -interactive-print pp",
+  ":set +t"
+  ]
+:}
+:def! nopretty \_ -> return ":set -interactive-print System.IO.print"
+
+:pretty

@@ -107,13 +107,15 @@ alias ecf='/snap/bin/emacsclient -c -n'
 alias vim='/snap/bin/emacsclient -ct -a /usr/bin/vim'
 alias vi='/usr/bin/vim'
 alias btc='bitcoin-cli -regtest'
+alias shake='stack exec shake --'
 # Linux only
 alias open='xdg-open'
 
-PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
-PATH=/usr/lib/postgresql/10/bin:${PATH}
-export EDITOR="/snap/bin/emacsclient -ct -a /usr/bin/vim"
-export EDITOR="/snap/bin/emacs -nw"
+PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+PATH=/usr/lib/postgresql/12/bin:${PATH}
+# export EDITOR="/snap/bin/emacsclient -ct -a /usr/bin/vim"
+# export EDITOR="/snap/bin/emacs -nw"
+export EDITOR=~/.local/bin/editor
 export VISUAL=/usr/bin/vim
 
 TZ="America/Chicago"
@@ -126,7 +128,9 @@ TZ="America/Chicago"
 
 hash -d btnl=~/src/Bitnomial/bitnomial
 
-export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_ADDR="http://127.0.0.1:8200"
+export VAULT_SKIP_VERIFY="true"
+export VAULT_TOKEN='00000000-0000-0000-0000-000000000000'
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
@@ -140,3 +144,7 @@ export AUTO_NOTIFY_IGNORE=("emacs" "emacsclient" $AUTO_NOTIFY_IGNORE)
 source /home/mwraith/.local/venv/bin/activate
 
 export ANSIBLE_STDOUT_CALLBACK=yaml
+
+eval "$(direnv hook zsh)"
+
+export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/go/bin:$PATH"

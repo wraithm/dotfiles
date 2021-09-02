@@ -109,7 +109,8 @@ alias speakresult="if [ \$pipestatus = 0 ]; then say 'done'; else say 'failed'; 
 
 PATH=/usr/local/opt/sqlite/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 # export EDITOR="/usr/local/bin/emacsclient -ct -a /usr/local/bin/vim"
-export EDITOR="/usr/local/bin/emacs -nw"
+# export EDITOR="/usr/local/bin/emacs -nw"
+export EDITOR=~/.local/bin/editor
 export VISUAL=/usr/local/bin/vim
 
 PATH=/usr/local/opt/llvm@6/bin:$PATH

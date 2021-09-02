@@ -5,7 +5,7 @@ GenericName=Text Editor
 Comment=Edit text
 MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;text/x-haskell;
 Exec=env BAMF_DESKTOP_FILE_HINT=/home/mwraith/.local/share/applications/emacs_emacs.desktop /snap/bin/emacsclient --alternate-editor='' -c -n %F
-Icon=/snap/emacs/966/usr/share/icons/hicolor/scalable/apps/emacs.svg
+Icon=/snap/emacs/current/usr/share/icons/hicolor/scalable/apps/emacs.svg
 Type=Application
 Terminal=false
 Categories=Development;TextEditor;
