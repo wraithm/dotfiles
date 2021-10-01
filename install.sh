@@ -1,10 +1,10 @@
 #!/bin/bash
 
-linux_pkgs=(zsh vim ghc psql hg git irc mutt term xmonad conky)
-macos_pkgs=(zsh vim ghc psql macos)
+linux_pkgs=(zsh vim ghc psql hg git irc mutt term xmonad conky jq)
+macos_pkgs=(zsh vim ghc psql macos jq)
 
-work_linux_pkgs=(workzsh vim ghc psql workgit gnome paperwm)
-work_macos_pkgs=(zsh vim ghc psql macos workgit)
+work_linux_pkgs=(workzsh vim ghc psql workgit gnome paperwm jq)
+work_macos_pkgs=(zsh vim ghc psql macos workgit jq)
 
 case "$1" in
     "linux")
