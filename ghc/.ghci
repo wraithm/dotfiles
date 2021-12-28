@@ -29,15 +29,15 @@ import Data.Monoid
 
 -- to install: stack install pretty-show hscolour
 -- Colourise ghci output (use :nopretty to disable)
-:set -package process
-:{
-:def! pretty \_ -> return $ unlines [
-  ":unset +t",
-  "pp x = putStrLn =<< catch' (rp \"HsColour\" []) =<< catch' (rp \"ppsh\" []) (show x) where { rp = System.Process.readProcess; catch' f y = Control.Exception.catch (f y) (h y); h :: String -> Control.Exception.SomeException -> IO String; h z _ = return z }",
-  ":seti -interactive-print pp",
-  ":set +t"
-  ]
-:}
-:def! nopretty \_ -> return ":set -interactive-print System.IO.print"
+-- :set -package process
+-- :{
+-- :def! pretty \_ -> return $ unlines [
+--   ":unset +t",
+--   "pp x = putStrLn =<< catch' (rp \"HsColour\" []) =<< catch' (rp \"ppsh\" []) (show x) where { rp = System.Process.readProcess; catch' f y = Control.Exception.catch (f y) (h y); h :: String -> Control.Exception.SomeException -> IO String; h z _ = return z }",
+--   ":seti -interactive-print pp",
+--   ":set +t"
+--   ]
+-- :}
+-- :def! nopretty \_ -> return ":set -interactive-print System.IO.print"
 
-:pretty
+-- :pretty
