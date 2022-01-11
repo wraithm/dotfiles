@@ -1,3 +1,4 @@
 \x auto
 \pset null ¤
 \timing
+\set HISTFILE ~/.psql_history- :DBNAME
