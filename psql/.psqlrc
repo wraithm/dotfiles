@@ -2,3 +2,4 @@
 \pset null ¤
 \timing
 \set HISTFILE ~/.psql_history- :DBNAME
+\set COMP_KEYWORD_CASE upper
