@@ -50,12 +50,12 @@ output * bg ~/Dropbox/Wallpapers/moon.jpg fill
 #
 # Example configuration:
 #
-set $lock swaylock -f -c 000000
 exec swayidle -w \
-         timeout 300 $lock \
+         timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' \
          resume 'swaymsg "output * dpms on"' \
-         before-sleep $lock
+         before-sleep 'swaylock -f -c 000000'
+bindsym $mod+Shift+q exec swaylock -f -c 000000
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -309,6 +309,8 @@ bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
 
 exec slack
 for_window [class="Slack"] move scratchpad
+
+assign [title="CQG Desktop"] $ws9
 
 exec 1password
 exec ~/.local/bin/dropbox.py start
