@@ -1,0 +1,27 @@
+profile {
+    output eDP-1 disable
+    output DP-2 mode 2560x1440@144 position 1920,287
+    output DP-5 mode 1920x1080@60 position 840,0 transform 270
+}
+
+profile {
+    output eDP-1 disable
+    output DP-2 mode 2560x1440@144 position 1920,287
+    output DP-6 mode 1920x1080@60 position 840,0 transform 270
+}
+
+profile {
+    output eDP-1 disable
+    output "Goldstar Company Ltd 27GL850 005NTDV7W218" mode 2560x1440@144 position 1920,287
+    output "Unknown PA247CV M5LMQS068605" mode 1920x1080@60 position 840,0 transform 270
+}
+
+profile {
+    output "Unknown 0x086E 0x00000000" disable
+    output "Goldstar Company Ltd 27GL850 005NTDV7W218" mode 2560x1440@144 position 1920,287
+    output "Unknown PA247CV M5LMQS068605" mode 1920x1080@60 position 840,0 transform 270
+}
+
+profile {
+    output eDP-1 enable
+}

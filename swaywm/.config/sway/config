@@ -1,0 +1,314 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+set $alt Mod1
+set $ctrl Control
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+# set $term foot
+set $term kitty
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu rofi -modi drun -show drun | xargs swaymsg exec --
+# need rofi fork with wayland support for wayland-native switching
+# https://github.com/lbonn/rofi#wayland-support
+# set $menu rofi -show combi -combi-modi "drun,window" -modi "combi,drun,window" | xargs swaymsg exec --
+set $menu rofi -show combi -combi-modi "drun,window" -modi "combi,drun,window,run,ssh,keys" -run-command 'swaymsg exec -- {cmd}'
+
+
+include /etc/sway/config-vars.d/*
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Dropbox/Wallpapers/moon.jpg fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+# output eDP-1 disable
+# output DP-2 mode 2560x1440@144 position 1920,287
+# output DP-5 mode 1920x1080@60 position 840,0 tranform 90
+
+### Idle configuration
+#
+# Example configuration:
+#
+set $lock swaylock -f -c 000000
+exec swayidle -w \
+         timeout 300 $lock \
+         timeout 600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+         before-sleep $lock
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+input "type:keyboard" {
+    xkb_options ctrl:nocaps
+}
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+w kill
+
+    # Start your launcher
+    bindsym $mod+space exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+$ctrl+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+$ctrl+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # cycle through windows on a monitor
+    bindsym $mod+bracketleft exec ~/.config/sway/alttab.py prev
+    bindsym $mod+bracketright exec ~/.config/sway/alttab.py next
+
+    # swap between monitors (aka outputs)
+    bindsym $mod+d exec ~/.config/sway/outputcycle.py
+
+    # switch between workspaces
+    bindsym $mod+comma workspace prev
+    bindsym $mod+period workspace next
+
+    # Move the focused window with the same, but add $ctrl
+    bindsym $mod+$ctrl+$left move left
+    bindsym $mod+$ctrl+$down move down
+    bindsym $mod+$ctrl+$up move up
+    bindsym $mod+$ctrl+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+$ctrl+Left move left
+    bindsym $mod+$ctrl+Down move down
+    bindsym $mod+$ctrl+Up move up
+    bindsym $mod+$ctrl+Right move right
+#
+# Workspaces:
+#
+    set $ws1 "1"
+    set $ws2 "2"
+    set $ws3 "3"
+    set $ws4 "4"
+    set $ws5 "5"
+    set $ws6 "6"
+    set $ws7 "7"
+    set $ws8 "8"
+    set $ws9 "9"
+    set $ws10 "10"
+
+    workspace $ws1 output DP-2 eDP-1
+    workspace $ws2 output DP-2 eDP-1
+    workspace $ws3 output DP-2 eDP-1
+    workspace $ws4 output DP-2 eDP-1
+    workspace $ws5 output DP-2 eDP-1
+    workspace $ws6 output DP-2 eDP-1
+    workspace $ws7 output DP-2 eDP-1
+    workspace $ws8 output DP-2 eDP-1
+    workspace $ws9 output DP-5 DP-6 eDP-1
+    workspace $ws10 output DP-5 DP-6 eDP-1
+
+    # Switch to workspace
+    bindsym $mod+1 workspace number $ws1
+    bindsym $mod+2 workspace number $ws2
+    bindsym $mod+3 workspace number $ws3
+    bindsym $mod+4 workspace number $ws4
+    bindsym $mod+5 workspace number $ws5
+    bindsym $mod+6 workspace number $ws6
+    bindsym $mod+7 workspace number $ws7
+    bindsym $mod+8 workspace number $ws8
+    bindsym $mod+9 workspace number $ws9
+    bindsym $mod+0 workspace number $ws10
+    # Move focused container to workspace
+    bindsym $mod+$ctrl+1 move container to workspace number $ws1
+    bindsym $mod+$ctrl+2 move container to workspace number $ws2
+    bindsym $mod+$ctrl+3 move container to workspace number $ws3
+    bindsym $mod+$ctrl+4 move container to workspace number $ws4
+    bindsym $mod+$ctrl+5 move container to workspace number $ws5
+    bindsym $mod+$ctrl+6 move container to workspace number $ws6
+    bindsym $mod+$ctrl+7 move container to workspace number $ws7
+    bindsym $mod+$ctrl+8 move container to workspace number $ws8
+    bindsym $mod+$ctrl+9 move container to workspace number $ws9
+    bindsym $mod+$ctrl+0 move container to workspace number $ws10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+t layout tabbed
+    bindsym $mod+y layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+$ctrl+g floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+g focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+$ctrl+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+    # temporary for muscle memory in paperwm
+    # bindsym $mod+Escape scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+
+# bar {
+#     position bottom
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     # TODO multiple time zones, battery, volume, music
+#     status_command while date +'%Y-%m-%d %R:%S'; do sleep 1; done
+#     colors {
+#         statusline #ffffff
+#         background #323232
+#         inactive_workspace #32323200 #32323200 #5c5c5c
+#     }
+# }
+
+bar {
+    position top
+    # swaybar_command ~/.nix-profile/bin/waybar
+    swaybar_command waybar
+}
+# exec_always pkill waybar; zsh -c "XDG_CURRENT_DESKTOP=Unity ~/.nix-profile/bin/waybar"
+
+include /etc/sway/config.d/*
+
+# handle output profiles
+exec_always pkill kanshi; exec kanshi
+
+bindsym $ctrl+$alt+b exec gtk-launch google-chrome
+bindsym $ctrl+$alt+e exec gtk-launch emacs_emacs
+bindsym $ctrl+$alt+t exec rofi-sensible-terminal
+
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+# pulse audio applet?
+# exec --no-startup-id pa-applet
+
+# notifications
+exec ~/.nix-profile/bin/mako
+bindsym $mod+Escape exec ~/.nix-profile/bin/makoctl dismiss -a
+
+# Multimedia
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Brightness controls
+bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 10
+
+exec slack
+for_window [class="Slack"] move scratchpad
+
+exec 1password
+exec ~/.local/bin/dropbox.py start
