@@ -55,7 +55,7 @@ ZSH_THEME="oldgentoo"
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
 # plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent auto-notify)
-plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent)
+plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent nix-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,6 +117,8 @@ PATH=/usr/lib/postgresql/12/bin:${PATH}
 # export EDITOR="/snap/bin/emacs -nw"
 export EDITOR=~/.local/bin/editor
 export VISUAL=/usr/bin/vim
+export PAGER=/usr/bin/less
+alias less='/usr/bin/less'
 
 TZ="America/Chicago"
 
@@ -144,7 +146,14 @@ export AUTO_NOTIFY_IGNORE=("emacs" "emacsclient" $AUTO_NOTIFY_IGNORE)
 source /home/mwraith/.local/venv/bin/activate
 
 export ANSIBLE_STDOUT_CALLBACK=yaml
+export ANSIBLE_FORCE_COLOR=True
 
 eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/go/bin:$PATH"
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+    export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
+    export TERMINFO=$HOME/.nix-profile/share/terminfo
+fi
