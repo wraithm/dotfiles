@@ -9,41 +9,42 @@ var Shell = imports.gi.Shell;
 // Extension local imports
 var Extension, Me, Tiling, Utils, App, Keybindings, Examples;
 
-function launchEmacsFrame() {
-    imports.misc.util.spawn(['emacsclient', '--eval', '(make-frame)']);
-}
+// function launchEmacsFrame() {
+//     imports.misc.util.spawn(['emacsclient', '--eval', '(make-frame)']);
+// }
 
 function init() {
     // Runs _only_ once on startup
 
     // Initialize extension imports here to make gnome-shell-reload work
-    Extension = imports.misc.extensionUtils.getCurrentExtension();
-    Me = Extension.imports.user;
-    Tiling = Extension.imports.tiling;
-    Utils = Extension.imports.utils;
-    Keybindings = Extension.imports.keybindings;
-    Examples = Extension.imports.examples;
-    App = Extension.imports.app;
+    // Extension = imports.misc.extensionUtils.getCurrentExtension();
+    // Me = Extension.imports.user;
+    // Tiling = Extension.imports.tiling;
+    // Utils = Extension.imports.utils;
+    // Keybindings = Extension.imports.keybindings;
+    // Examples = Extension.imports.examples;
+    // App = Extension.imports.app;
 
     // Multi-monitor controls
-    Examples.keybindings.moveSpaceToMonitor();
-    Examples.keybindings.cycleMonitor();
+    // Examples.keybindings.moveSpaceToMonitor();
+    // Examples.keybindings.cycleMonitor();
 
     // bind C-M-e to open in emacs
-    Keybindings.bindkey(
-        "<ctrl><alt>e", "open-emacs",
-        launchEmacsFrame,
-        { activeInNavigator: false }
-    );
+    // Keybindings.bindkey(
+    //     "<ctrl><alt>e", "open-emacs",
+    //     launchEmacsFrame,
+    //     { activeInNavigator: false }
+    // );
 
     // s-n in emacs opens a new emacs frame
-    App.customHandlers['emacs_emacs.desktop'] = launchEmacsFrame;
+    // App.customHandlers['emacs_emacs.desktop'] = launchEmacsFrame;
 
     // Slack is a scratch window
-    Tiling.defwinprop({
-        wm_class: "Slack",
-        scratch_layer: true,
-    });
+    // Tiling.defwinprop({
+    //     wm_class: "Slack",
+    //     scratch_layer: true,
+    // });
+
 }
 
 function enable() {
