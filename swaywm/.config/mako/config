@@ -28,4 +28,5 @@ background-color=#c00000
 border-color=#ff0000
 
 [app-name=Slack]
-default-timeout=5000
+default-timeout=10000
+group-by=summary
