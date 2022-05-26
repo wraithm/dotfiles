@@ -143,7 +143,7 @@ export REPORTTIME=2
 export AUTO_NOTIFY_THRESHOLD=60
 export AUTO_NOTIFY_IGNORE=("emacs" "emacsclient" $AUTO_NOTIFY_IGNORE)
 
-source /home/mwraith/.local/venv/bin/activate
+# source /home/mwraith/.local/venv/bin/activate
 
 export ANSIBLE_STDOUT_CALLBACK=yaml
 export ANSIBLE_FORCE_COLOR=True

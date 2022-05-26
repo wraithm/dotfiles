@@ -319,11 +319,10 @@ assign [title="CQG Desktop"] $ws9
 exec 1password
 exec ~/.local/bin/dropbox.py start
 
-# pipewire/desktop-portal stuff for screen sharing
+## pipewire/desktop-portal stuff for screen sharing
 # exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-
-# exec systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+# exec systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 # exec systemctl --user start pipewire-media-session
-
-# exec ~/.nix-profile/libexec/xdg-desktop-portal -r
-# exec ~/.nix-profile/libexec/xdg-desktop-portal-wlr -r
+# exec /usr/libexec/xdg-desktop-portal -r
+# exec /usr/libexec/xdg-desktop-portal-gtk -r
+# exec /usr/libexec/xdg-desktop-portal-wlr -r
