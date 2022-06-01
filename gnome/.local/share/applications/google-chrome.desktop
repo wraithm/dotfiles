@@ -106,7 +106,8 @@ Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 # Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=UseOzonePlatform --ozone-platform=wayland %U
-Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation %U
+# Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation %U
+Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode %U
 StartupNotify=true
 Terminal=false
 Icon=google-chrome
@@ -168,7 +169,8 @@ Name[vi]=Cửa sổ Mới
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
 # Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=UseOzonePlatform --ozone-platform=wayland
-Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation
+# Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation
+Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
@@ -221,4 +223,5 @@ Name[vi]=Cửa sổ ẩn danh mới
 Name[zh_CN]=新建隐身窗口
 Name[zh_TW]=新增無痕式視窗
 # Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=UseOzonePlatform --ozone-platform=wayland --incognito
-Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation --incognito
+# Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode --enable-features=WaylandOverlayDelegation --incognito
+Exec=/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode

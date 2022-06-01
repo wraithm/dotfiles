@@ -1,0 +1,102 @@
+###############################################################################
+# Window and Workspace Configuration
+###############################################################################
+
+## Modify // Window Position // <><Shift> ↑ ↓ ← → ##
+bindsym $mod+$ctrl+Left move left
+bindsym $mod+$ctrl+Down move down
+bindsym $mod+$ctrl+Up move up
+bindsym $mod+$ctrl+Right move right
+
+## Modify // Window Position // <><Shift> k j h l ##
+set_from_resource $i3-wm.binding.move_left i3-wm.binding.move_left Control+h
+set_from_resource $i3-wm.binding.move_right i3-wm.binding.move_right Control+l
+set_from_resource $i3-wm.binding.move_up i3-wm.binding.move_up Control+k
+set_from_resource $i3-wm.binding.move_down i3-wm.binding.move_down Control+j
+bindsym $mod+$i3-wm.binding.move_left move left
+bindsym $mod+$i3-wm.binding.move_down move down
+bindsym $mod+$i3-wm.binding.move_up move up
+bindsym $mod+$i3-wm.binding.move_right move right
+
+## Modify // Containing Workspace // <><Ctrl><Shift> ↑ ↓ ← → ##
+set_from_resource $i3-wm.binding.move_workspace_output_left i3-wm.binding.move_workspace_output_left Ctrl+Shift+Left
+set_from_resource $i3-wm.binding.move_workspace_output_right i3-wm.binding.move_workspace_output_right Ctrl+Shift+Right
+set_from_resource $i3-wm.binding.move_workspace_output_up i3-wm.binding.move_workspace_output_up Ctrl+Shift+Up
+set_from_resource $i3-wm.binding.move_workspace_output_down i3-wm.binding.move_workspace_output_down Ctrl+Shift+Down
+bindsym $mod+$i3-wm.binding.move_workspace_output_left move workspace to output left
+bindsym $mod+$i3-wm.binding.move_workspace_output_right move workspace to output right
+bindsym $mod+$i3-wm.binding.move_workspace_output_up move workspace to output up
+bindsym $mod+$i3-wm.binding.move_workspace_output_down move workspace to output down
+
+## Modify // Containing Workspace // <><Ctrl><Shift> k j h l ##
+set_from_resource $i3-wm.binding.take_left i3-wm.binding.take_left Ctrl+Shift+h
+set_from_resource $i3-wm.binding.take_right i3-wm.binding.take_right Ctrl+Shift+l
+set_from_resource $i3-wm.binding.take_up i3-wm.binding.take_up Ctrl+Shift+k
+set_from_resource $i3-wm.binding.take_down i3-wm.binding.take_down Ctrl+Shift+j
+bindsym $mod+$i3-wm.binding.take_left move workspace to output left
+bindsym $mod+$i3-wm.binding.take_down move workspace to output down
+bindsym $mod+$i3-wm.binding.take_up move workspace to output up
+bindsym $mod+$i3-wm.binding.take_right move workspace to output right
+
+## Modify // Vertical Window Orientation // <> v ##
+set_from_resource $i3-wm.binding.split_v i3-wm.binding.split_v b
+bindsym $mod+$i3-wm.binding.split_v split vertical
+
+## Modify // Horizontal Window Orientation // <> g ##
+set_from_resource $i3-wm.binding.split_h i3-wm.binding.split_h g
+bindsym $mod+$i3-wm.binding.split_h split horizontal
+
+## Modify // Toggle Window Orientation // <> Backspace ##
+set_from_resource $i3-wm.binding.orientation_toggle i3-wm.binding.orientation_toggle BackSpace
+bindsym $mod+$i3-wm.binding.orientation_toggle split toggle
+
+## Modify // Window Fullscreen Toggle // <> f ##
+set_from_resource $i3-wm.binding.fullscreen_toggle i3-wm.binding.fullscreen_toggle f
+bindsym $mod+$i3-wm.binding.fullscreen_toggle fullscreen toggle
+
+## Modify // Window Floating Toggle // <><Shift> f ##
+set_from_resource $i3-wm.binding.float_toggle i3-wm.binding.float_toggle Shift+f
+bindsym $mod+Shift+$i3-wm.binding.float_toggle floating toggle
+
+## Modify // Move to Scratchpad // <><Ctrl> m ##
+# set_from_resource $i3-wm.binding.move_scratchpad i3-wm.binding.move_scratchpad Ctrl+m
+# bindsym $mod+$i3-wm.binding.move_scratchpad move to scratchpad
+
+## Modify // Tile/Float Focus Toggle // <><Shift> t ##
+set_from_resource $i3-wm.binding.focus_toggle i3-wm.binding.focus_toggle Shift+t
+bindsym $mod+$i3-wm.binding.focus_toggle focus mode_toggle
+
+## Modify // Window Layout Mode // <> t ##
+set_from_resource $i3-wm.binding.layout_mode i3-wm.binding.layout_mode t
+bindsym $mod+$i3-wm.binding.layout_mode layout toggle tabbed splith splitv
+
+## Modify // Move Window to Workspace 1 - 10 // <><Ctrl> 0..9 ##
+bindsym $mod+$ctrl+$ws1_key move container to workspace number $ws1
+bindsym $mod+$ctrl+$ws2_key move container to workspace number $ws2
+bindsym $mod+$ctrl+$ws3_key move container to workspace number $ws3
+bindsym $mod+$ctrl+$ws4_key move container to workspace number $ws4
+bindsym $mod+$ctrl+$ws5_key move container to workspace number $ws5
+bindsym $mod+$ctrl+$ws6_key move container to workspace number $ws6
+bindsym $mod+$ctrl+$ws7_key move container to workspace number $ws7
+bindsym $mod+$ctrl+$ws8_key move container to workspace number $ws8
+bindsym $mod+$ctrl+$ws9_key move container to workspace number $ws9
+bindsym $mod+$ctrl+$ws10_key move container to workspace number $ws10
+
+# move focused container to workspace, move to workspace
+## Modify // Carry Window to Workspace 1 - 10// <><Alt> 0..9 ##
+# bindsym $mod+$alt+$ws1_key move container to workspace number $ws1; workspace number $ws1
+# bindsym $mod+$alt+$ws2_key move container to workspace number $ws2; workspace number $ws2
+# bindsym $mod+$alt+$ws3_key move container to workspace number $ws3; workspace number $ws3
+# bindsym $mod+$alt+$ws4_key move container to workspace number $ws4; workspace number $ws4
+# bindsym $mod+$alt+$ws5_key move container to workspace number $ws5; workspace number $ws5
+# bindsym $mod+$alt+$ws6_key move container to workspace number $ws6; workspace number $ws6
+# bindsym $mod+$alt+$ws7_key move container to workspace number $ws7; workspace number $ws7
+# bindsym $mod+$alt+$ws8_key move container to workspace number $ws8; workspace number $ws8
+# bindsym $mod+$alt+$ws9_key move container to workspace number $ws9; workspace number $ws9
+# bindsym $mod+$alt+$ws10_key move container to workspace number $ws10; workspace number $ws10
+
+set_from_resource $i3-wm.workspace.auto_back_and_forth i3-wm.workspace.auto_back_and_forth no
+workspace_auto_back_and_forth $i3-wm.workspace.auto_back_and_forth
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod

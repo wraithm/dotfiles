@@ -1,0 +1,6 @@
+!regolith.look.path: /usr/share/regolith-look/nord
+!regolith.look.path: /usr/share/regolith-look/blackhole
+!regolith.look.path: /usr/share/regolith-look/solarized-dark
+regolith.look.path: /usr/share/regolith-look/default
+i3-wm.bar.position: top
+gnome.wallpaper: /home/mwraith/Dropbox/Wallpapers/moon.jpg
