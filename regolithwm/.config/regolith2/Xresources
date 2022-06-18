@@ -1,6 +1,17 @@
+i3-wm.bar.position: top
 !regolith.look.path: /usr/share/regolith-look/nord
 !regolith.look.path: /usr/share/regolith-look/blackhole
 !regolith.look.path: /usr/share/regolith-look/solarized-dark
-regolith.look.path: /usr/share/regolith-look/default
-i3-wm.bar.position: top
-gnome.wallpaper: /home/mwraith/Dropbox/Wallpapers/moon.jpg
+!regolith.look.path: /usr/share/regolith-look/default
+!gnome.wallpaper: /home/mwraith/Dropbox/Wallpapers/moon.jpg
+regolith.look.path: /home/mwraith/.config/regolith2/style
+gtk.font_name: Noto Sans 13
+!gnome.terminal.font: Noto Sans 13
+gnome.wallpaper:
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault

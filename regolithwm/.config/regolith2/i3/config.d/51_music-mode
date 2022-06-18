@@ -1,0 +1,63 @@
+# Multimedia
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+Shift+p exec playerctl play-pause
+bindsym $mod+Shift+greater exec playerctl next
+bindsym $mod+Shift+less exec playerctl previous
+
+## Music // Enter Music Mode // <> m ##
+mode "Music Mode" {
+    # These bindings trigger as soon as you enter the music mode
+
+    # Volume
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+
+    bindsym equal exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+    bindsym Shift+equal exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
+
+    bindsym minus exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+    bindsym Shift+minus exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
+
+    bindsym m exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+    bindsym Shift+m exec --no-startup-id pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+
+    # play pause next prev
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
+    bindsym p exec playerctl play-pause
+    bindsym Shift+p exec playerctl play-pause
+    bindsym Shift+greater exec playerctl next
+    bindsym Shift+less exec playerctl previous
+
+    ## music // music Window // ↑ ↓ ← → ##
+    bindsym Left exec playerctl previous
+    bindsym Down exec playerctl stop
+    bindsym Up exec playerctl play-pause
+    bindsym Right exec playerctl next
+
+    bindsym Shift+Left exec playerctl previous
+    bindsym Shift+Down exec playerctl stop
+    bindsym Shift+Up exec playerctl play-pause
+    bindsym Shift+Right exec playerctl next
+
+    ## music // music Window // k j h l ##
+    bindsym $i3-wm.binding.left exec playerctl previous
+    bindsym $i3-wm.binding.up exec playerctl stop
+    bindsym $i3-wm.binding.down exec playerctl play-pause
+    bindsym $i3-wm.binding.right exec playerctl next
+
+    ## music // Exit music Mode // Escape or Enter ##
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+set_from_resource $i3-wm.binding.music_mode i3-wm.binding.music_mode m
+bindsym $mod+$i3-wm.binding.music_mode mode "Music Mode"
