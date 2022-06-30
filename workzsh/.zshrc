@@ -9,7 +9,9 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="hggentoo"
 # ZSH_THEME="gentoo"
-ZSH_THEME="oldgentoo"
+# ZSH_THEME="oldgentoo"
+# ZSH_THEME="testcrcandy"
+ZSH_THEME="newgentoo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -129,6 +131,7 @@ TZ="America/Chicago"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 hash -d btnl=~/src/Bitnomial/bitnomial
+hash -d masterbtnl=~/src/Bitnomial/master
 
 export VAULT_ADDR="http://127.0.0.1:8200"
 export VAULT_SKIP_VERIFY="true"
