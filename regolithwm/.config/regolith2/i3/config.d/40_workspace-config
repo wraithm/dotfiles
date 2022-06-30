@@ -2,13 +2,13 @@
 # Window and Workspace Configuration
 ###############################################################################
 
-## Modify // Window Position // <><Shift> ↑ ↓ ← → ##
+## Modify // Window Position // <><Ctrl> ↑ ↓ ← → ##
 bindsym $mod+$ctrl+Left move left
 bindsym $mod+$ctrl+Down move down
 bindsym $mod+$ctrl+Up move up
 bindsym $mod+$ctrl+Right move right
 
-## Modify // Window Position // <><Shift> k j h l ##
+## Modify // Window Position // <><Ctrl> k j h l ##
 set_from_resource $i3-wm.binding.move_left i3-wm.binding.move_left Control+h
 set_from_resource $i3-wm.binding.move_right i3-wm.binding.move_right Control+l
 set_from_resource $i3-wm.binding.move_up i3-wm.binding.move_up Control+k
