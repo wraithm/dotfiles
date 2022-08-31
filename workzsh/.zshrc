@@ -55,9 +55,11 @@ ZSH_THEME="newgentoo"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+# nix-shell comes from https://github.com/chisui/zsh-nix-shell
+# install with: git clone https://github.com/chisui/zsh-nix-shell.git $ZSH_CUSTOM/plugins/nix-shell
+plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent nix-zsh-completions nix-shell)
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
 # plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent auto-notify)
-plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent nix-zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,8 +101,9 @@ LSCOLORS=exfxcxdxbxegedabagacad;
 alias scp='noglob scp'
 alias ghci='stack ghci'
 alias ocaml='rlwrap ocaml "$@"'
-alias ant='ant -find build.xml'
 alias emacs='/snap/bin/emacs -nw'
+alias eshell='/snap/bin/emacs -nw -f eshell'
+alias ecshell="/snap/bin/emacsclient -ct -e '(eshell t)'"
 alias ghci-core='stack ghci --ghci-options="-ddump-simpl -dsuppress-idinfo \
     -dsuppress-coercions -dsuppress-type-applications \
     -dsuppress-uniques -dsuppress-module-prefixes"'
@@ -110,11 +113,10 @@ alias vim='/snap/bin/emacsclient -ct -a /usr/bin/vim'
 alias vi='/usr/bin/vim'
 alias btc='bitcoin-cli -regtest'
 alias shake='stack exec shake --'
+alias rg="rg -L -. --glob '!.git'"
 # Linux only
 alias open='xdg-open'
 
-PATH=$HOME/.local/bin:$HOME/.cargo/bin:$PATH
-PATH=/usr/lib/postgresql/12/bin:${PATH}
 # export EDITOR="/snap/bin/emacsclient -ct -a /usr/bin/vim"
 # export EDITOR="/snap/bin/emacs -nw"
 export EDITOR=~/.local/bin/editor
@@ -137,8 +139,6 @@ export VAULT_ADDR="http://127.0.0.1:8200"
 export VAULT_SKIP_VERIFY="true"
 export VAULT_TOKEN='00000000-0000-0000-0000-000000000000'
 
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
-
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export REPORTTIME=2
@@ -146,17 +146,29 @@ export REPORTTIME=2
 export AUTO_NOTIFY_THRESHOLD=60
 export AUTO_NOTIFY_IGNORE=("emacs" "emacsclient" $AUTO_NOTIFY_IGNORE)
 
-# source /home/mwraith/.local/venv/bin/activate
-
 export ANSIBLE_STDOUT_CALLBACK=yaml
 export ANSIBLE_FORCE_COLOR=True
 
 eval "$(direnv hook zsh)"
 
-export PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/go/bin:$PATH"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+PATH=/usr/lib/postgresql/12/bin:${PATH}
+PATH="$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/go/bin:$PATH"
+export PATH
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
     export LOCALE_ARCHIVE="$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
     export TERMINFO=$HOME/.nix-profile/share/terminfo
 fi
+
+NIX_BTNL_TOOLS=$(nix-env -q bitnomial-tools --installed --out-path 2>/dev/null | awk '{print $2}')
+if [[ ! -z $NIX_BTNL_TOOLS && -d $NIX_BTNL_TOOLS ]]; then
+    export FPATH=$NIX_BTNL_TOOLS/share/zsh/site-functions:$NIX_BTNL_TOOLS/share/zsh/vendor-completions:$FPATH
+fi
+
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
