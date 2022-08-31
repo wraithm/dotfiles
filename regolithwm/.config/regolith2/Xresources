@@ -4,10 +4,12 @@ i3-wm.bar.position: top
 !regolith.look.path: /usr/share/regolith-look/solarized-dark
 !regolith.look.path: /usr/share/regolith-look/default
 !gnome.wallpaper: /home/mwraith/Dropbox/Wallpapers/moon.jpg
+!gnome.wallpaper:
+regolith.wallpaper.file: /home/mwraith/Dropbox/Wallpapers/moon.jpg
+regolith.lockscreen.wallpaper.file: /home/mwraith/Dropbox/Wallpapers/moon.jpg
 regolith.look.path: /home/mwraith/.config/regolith2/style
 gtk.font_name: Noto Sans 13
 !gnome.terminal.font: Noto Sans 13
-gnome.wallpaper:
 Xft.autohint: 0
 Xft.antialias: 1
 Xft.hinting: true
