@@ -9,3 +9,7 @@ bindsym $mod+$i3-wm.binding.terminal exec --no-startup-id /usr/bin/x-terminal-em
 ## Launch // Browser // <><Shift> Enter ##
 set_from_resource $i3-wm.binding.browser i3-wm.binding.browser Shift+Return
 bindsym $mod+$i3-wm.binding.browser exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+
+## Launch // Editor // <><Ctrl> Enter ##
+set_from_resource $i3-wm.binding.editor i3-wm.binding.editor Ctrl+Return
+bindsym $mod+$i3-wm.binding.editor exec --no-startup-id gtk-launch emacs_emacs
