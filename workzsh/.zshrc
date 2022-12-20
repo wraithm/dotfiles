@@ -120,7 +120,8 @@ alias open='xdg-open'
 # export EDITOR="/snap/bin/emacsclient -ct -a /usr/bin/vim"
 # export EDITOR="/snap/bin/emacs -nw"
 export EDITOR=~/.local/bin/editor
-export VISUAL=/usr/bin/vim
+# export VISUAL=/usr/bin/vim
+export VISUAL=$EDITOR
 export PAGER=/usr/bin/less
 alias less='/usr/bin/less'
 

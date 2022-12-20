@@ -38,7 +38,7 @@ bindsym $mod+$i3-wm.binding.take_down move workspace to output down
 bindsym $mod+$i3-wm.binding.take_up move workspace to output up
 bindsym $mod+$i3-wm.binding.take_right move workspace to output right
 
-## Modify // Vertical Window Orientation // <> v ##
+## Modify // Vertical Window Orientation // <> b ##
 set_from_resource $i3-wm.binding.split_v i3-wm.binding.split_v b
 bindsym $mod+$i3-wm.binding.split_v split vertical
 
@@ -84,16 +84,16 @@ bindsym $mod+$ctrl+$ws10_key move container to workspace number $ws10
 
 # move focused container to workspace, move to workspace
 ## Modify // Carry Window to Workspace 1 - 10// <><Alt> 0..9 ##
-# bindsym $mod+$alt+$ws1_key move container to workspace number $ws1; workspace number $ws1
-# bindsym $mod+$alt+$ws2_key move container to workspace number $ws2; workspace number $ws2
-# bindsym $mod+$alt+$ws3_key move container to workspace number $ws3; workspace number $ws3
-# bindsym $mod+$alt+$ws4_key move container to workspace number $ws4; workspace number $ws4
-# bindsym $mod+$alt+$ws5_key move container to workspace number $ws5; workspace number $ws5
-# bindsym $mod+$alt+$ws6_key move container to workspace number $ws6; workspace number $ws6
-# bindsym $mod+$alt+$ws7_key move container to workspace number $ws7; workspace number $ws7
-# bindsym $mod+$alt+$ws8_key move container to workspace number $ws8; workspace number $ws8
-# bindsym $mod+$alt+$ws9_key move container to workspace number $ws9; workspace number $ws9
-# bindsym $mod+$alt+$ws10_key move container to workspace number $ws10; workspace number $ws10
+bindsym $mod+$alt+$ws1_key move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+$alt+$ws2_key move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+$alt+$ws3_key move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+$alt+$ws4_key move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+$alt+$ws5_key move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+$alt+$ws6_key move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+$alt+$ws7_key move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+$alt+$ws8_key move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+$alt+$ws9_key move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+$alt+$ws10_key move container to workspace number $ws10; workspace number $ws10
 
 set_from_resource $i3-wm.workspace.auto_back_and_forth i3-wm.workspace.auto_back_and_forth no
 workspace_auto_back_and_forth $i3-wm.workspace.auto_back_and_forth
