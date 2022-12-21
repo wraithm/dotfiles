@@ -184,8 +184,10 @@ bindsym $mod+Tab exec ~/.config/regolith2/i3/alttab.py next current
 # Dismiss notifs
 bindsym $mod+Escape exec dunstctl close-all
 
+# To get class: xprop WM_CLASS
 for_window [class="Slack"] move scratchpad
 for_window [class="Slack"] border pixel 1
+for_window [class="notion-app"] border pixel 1
 for_window [class="Evolution-alarm-notify"] floating enable
 assign [title="CQG Desktop"] $ws9
 
