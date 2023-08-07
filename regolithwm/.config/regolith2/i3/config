@@ -175,8 +175,12 @@ bindsym $ctrl+$alt+e exec gtk-launch emacs_emacs
 bindsym $ctrl+$alt+t exec rofi-sensible-terminal
 
 # switch between workspaces
-bindsym $mod+comma workspace prev
-bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev_on_output
+bindsym $mod+period workspace next_on_output
+
+# move container to next workspace
+bindsym $mod+$ctrl+comma move container to workspace prev_on_output
+bindsym $mod+$ctrl+period move container to workspace next_on_output
 
 # scratchpad
 bindsym $mod+minus scratchpad show
