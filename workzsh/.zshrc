@@ -61,6 +61,9 @@ plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-age
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
 # plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent auto-notify)
 
+export HISTSIZE=1000000000
+export SAVEHIST=$HISTSIZE
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -193,3 +196,6 @@ _gt_yargs_completions()
 }
 compdef _gt_yargs_completions gt
 ###-end-gt-completions-###
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /nix/store/34m359hc8r2r8h9rsavysjmvyk29m0m6-nomad-1.4.4/bin/nomad nomad

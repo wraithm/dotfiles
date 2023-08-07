@@ -157,6 +157,19 @@ workspace 8 output DP-3-2 DP-3 DP-3-1 eDP-1
 workspace 9 output DP-3-2 DP-3 DP-3-1 eDP-1
 workspace 10 output DP-3-2 DP-3 DP-3-1 eDP-1
 
+# TEMP FOR WORKING IN MT
+# workspace 1 output DP-3
+# workspace 2 output DP-3
+# workspace 3 output DP-3
+# workspace 4 output DP-3
+# workspace 5 output DP-3
+# workspace 6 output DP-3
+# workspace 7 output eDP-1
+# workspace 8 output eDP-1
+# workspace 9 output eDP-1
+# workspace 10 output eDP-1
+
+
 bindsym $ctrl+$alt+b exec gtk-launch google-chrome
 bindsym $ctrl+$alt+e exec gtk-launch emacs_emacs
 bindsym $ctrl+$alt+t exec rofi-sensible-terminal
@@ -187,6 +200,7 @@ bindsym $mod+Escape exec dunstctl close-all
 # To get class: xprop WM_CLASS
 for_window [class="Slack"] move scratchpad
 for_window [class="Slack"] border pixel 1
+for_window [class="Spotify"] border pixel 1
 for_window [class="notion-app"] border pixel 1
 for_window [class="Evolution-alarm-notify"] floating enable
 assign [title="CQG Desktop"] $ws9
