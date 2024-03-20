@@ -104,6 +104,7 @@ LSCOLORS=exfxcxdxbxegedabagacad;
 alias scp='noglob scp'
 alias ghci='stack ghci'
 alias ocaml='rlwrap ocaml "$@"'
+alias doom='~/.config/emacs/bin/doom'
 alias emacs='/snap/bin/emacs -nw'
 alias eshell='/snap/bin/emacs -nw -f eshell'
 alias ecshell="/snap/bin/emacsclient -ct -e '(eshell t)'"
