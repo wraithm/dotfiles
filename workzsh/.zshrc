@@ -57,7 +57,7 @@ ZSH_THEME="newgentoo"
 # Add wisely, as too many plugins slow down shell startup.
 # nix-shell comes from https://github.com/chisui/zsh-nix-shell
 # install with: git clone https://github.com/chisui/zsh-nix-shell.git $ZSH_CUSTOM/plugins/nix-shell
-plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent nix-zsh-completions nix-shell)
+plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell)
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
 # plugins=(history-substring-search stack man sudo terraform vagrant vault ssh-agent auto-notify)
 
@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/aws-01.key"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
