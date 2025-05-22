@@ -41,3 +41,5 @@
 [merge]
 	tool = ediff
 	conflictStyle = diff3
+[rerere]
+	enabled = true

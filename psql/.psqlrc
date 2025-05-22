@@ -1,5 +1,6 @@
 \x auto
 \pset null ¤
+\pset pager_min_lines 100
 \timing
 \set HISTFILE ~/.psql_history- :DBNAME
 \set COMP_KEYWORD_CASE upper
