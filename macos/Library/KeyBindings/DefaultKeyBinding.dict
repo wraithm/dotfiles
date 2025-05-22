@@ -3,7 +3,4 @@
     "~f" = moveWordForward:;
     "~d" = deleteWordForward:;
     "^w" = deleteWordBackward:;
-    "~l" = (moveWordForwardAndModifySelection:, lowercaseWord:);
-    "~u" = (moveWordForwardAndModifySelection:, uppercaseWord:);
-    "~c" = (moveWordForwardAndModifySelection:, capitalizeWord:);
 }

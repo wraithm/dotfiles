@@ -25,7 +25,6 @@ import Data.Monoid
 :def rr (\a -> return $ unlines [":r", a])
 
 :set prompt "ghci> "
-:set editor /snap/bin/emacsclient -ct -a /usr/local/bin/vim
 
 -- to install: stack install pretty-show hscolour
 -- Colourise ghci output (use :nopretty to disable)

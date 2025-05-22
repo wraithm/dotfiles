@@ -40,7 +40,7 @@ noremap <C-l> <C-W>l
 
 noremap <leader>w :w<CR>
 noremap <leader>fs :w<CR>
-" noremap <leader>ff :find 
+" noremap <leader>ff :find
 noremap <leader>k :bdelete<CR>
 noremap <leader>n :bnext<CR>
 noremap <leader>p :bprev<CR>
@@ -48,6 +48,8 @@ noremap <leader>b :ls<CR>
 
 " Vim-Plug
 call plug#begin('~/.vim/plugged')
+
+set rtp+=/opt/homebrew/opt/fzf
 
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'

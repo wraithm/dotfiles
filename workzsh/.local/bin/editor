@@ -1,2 +1,2 @@
 #!/bin/sh
-/snap/bin/emacsclient -ct -a /usr/bin/vim -- "$@"
+emacsclient -s ~/.config/emacs/server/server -ct -a /usr/bin/vim -- "$@"

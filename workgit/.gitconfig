@@ -21,7 +21,7 @@
 	ff = only
 
 [core]
-	editor = /snap/bin/emacs -nw
+	editor = emacs -nw
 
 [mergetool.ediff]
     cmd = emacs --eval \"\
