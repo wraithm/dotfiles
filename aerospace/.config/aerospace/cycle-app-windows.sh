@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Get direction from argument (default to "next")
+direction="${1:-next}"
+
 # Get current window's app bundle ID and window ID in one call
 current_info=$(aerospace list-windows --focused --format "%{app-bundle-id}|%{window-id}")
 IFS='|' read -r current_app current_window <<<"$current_info"
@@ -12,8 +15,12 @@ if [ ${#windows[@]} -gt 1 ]; then
     # Find the current window index and calculate the next one
     for i in "${!windows[@]}"; do
         if [ "${windows[$i]}" = "$current_window" ]; then
-            # Get next index, wrapping around if needed
-            next_index=$(((i + 1) % ${#windows[@]}))
+            # Calculate index based on direction
+            if [ "$direction" = "prev" ]; then
+                next_index=$(((i - 1 + ${#windows[@]}) % ${#windows[@]}))
+            else
+                next_index=$(((i + 1) % ${#windows[@]}))
+            fi
             next_window="${windows[$next_index]}"
 
             # Focus the next window

@@ -30,7 +30,7 @@ move_app_to_scratchpad() {
         grep "$APP_NAME" |
         cut -d' ' -f1 |
         head -n1)
-    aerospace move-node-to-workspace M --window-id "$app_window_id"
+    aerospace move-node-to-workspace S --window-id "$app_window_id"
 }
 
 main() {
