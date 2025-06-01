@@ -77,6 +77,10 @@ automatically-unhide-macos-hidden-apps = true
     10 = ['secondary', 'main']
     'S' = 'main'
 
+[[on-window-detected]]
+if.app-id="com.mitchellh.ghostty"
+run= ["layout tiling"]
+
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
@@ -106,14 +110,26 @@ automatically-unhide-macos-hidden-apps = true
 
     alt-enter = '''exec-and-forget osascript -e '
     tell application "iTerm"
-         create window with default profile
+        create window with default profile
     end tell'
     '''
     ctrl-alt-t = '''exec-and-forget osascript -e '
     tell application "iTerm"
-         create window with default profile
+        create window with default profile
     end tell'
     '''
+    # alt-enter = '''exec-and-forget osascript -e '
+    # tell application "Ghostty"
+    #     activate
+    #     tell application "System Events" to keystroke "n" using {command down}
+    # end tell' || open -a Ghostty
+    # '''
+    # ctrl-alt-t = '''exec-and-forget osascript -e '
+    # tell application "Ghostty"
+    #     activate
+    #     tell application "System Events" to keystroke "n" using {command down}
+    # end tell' || open -a Ghostty
+    # '''
 
     ctrl-alt-b = '''exec-and-forget osascript -e '
     tell application "Safari"
@@ -145,8 +161,11 @@ automatically-unhide-macos-hidden-apps = true
 
     # TODO find binding for next free workspace
     # alt-backtick = 'exec-and-forget aerospace workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
+    # alt-ctrl-backtick = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --empty --monitor focused | head -n1)'
     # alt-shift-backtick = 'exec-and-forget aerospace move-node-to-workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
-    alt-ctrl-backtick = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --empty --monitor focused | head -n1)'
+    alt-backslash = 'exec-and-forget aerospace workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
+    alt-ctrl-backslash = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --empty --monitor focused | head -n1)'
+    alt-shift-backslash = 'exec-and-forget aerospace move-node-to-workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
 
     # cycle windows for an app
     alt-backtick = 'exec-and-forget ~/.config/aerospace/cycle-app-windows.sh next'
@@ -193,6 +212,7 @@ automatically-unhide-macos-hidden-apps = true
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     alt-shift-minus = 'resize smart -50'
     alt-shift-equal = 'resize smart +50'
+    alt-equal = 'balance-sizes'
 
     alt-minus = 'exec-and-forget ~/.config/aerospace/scratchpad.sh com.tinyspeck.slackmacgap Slack'
 
@@ -317,9 +337,11 @@ automatically-unhide-macos-hidden-apps = true
     # alt-esc = 'exec-and-forget shortcuts run "Swipe away notifications"'
 
     # music
-    alt-shift-p = 'exec-and-forget shortcuts run "Play/Pause"'
-    alt-shift-period = 'exec-and-forget shortcuts run "Skip Forward"'
-    alt-shift-comma  = 'exec-and-forget shortcuts run "Skip Back"'
+    alt-shift-p = 'exec-and-forget nowplaying-cli togglePlayPause'
+    alt-shift-period = 'exec-and-forget nowplaying-cli next'
+    alt-shift-comma  = 'exec-and-forget nowplaying-cli previous'
+    alt-shift-right = 'exec-and-forget nowplaying-cli next'
+    alt-shift-left  = 'exec-and-forget nowplaying-cli previous'
 
     alt-w = 'close'
     alt-shift-r = 'mode resize'
@@ -357,6 +379,7 @@ automatically-unhide-macos-hidden-apps = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
+    alt-shift-semicolon = 'mode main'
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     # backspace = ['close-all-windows-but-current', 'mode main']
@@ -369,10 +392,6 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
 
-    down = 'volume down'
-    up = 'volume up'
-    shift-down = ['volume set 0', 'mode main']
-
 [mode.music.binding]
     # Volume controls
     equal = 'volume up'
@@ -381,22 +400,28 @@ automatically-unhide-macos-hidden-apps = true
     shift-m = 'volume mute-toggle'  # Just mute
 
     # Play/pause/next/prev with single keys
-    p = 'exec-and-forget shortcuts run "Play/Pause"'
-    shift-p = 'exec-and-forget shortcuts run "Play/Pause"'
-    period = 'exec-and-forget shortcuts run "Skip Forward"'
-    shift-period = 'exec-and-forget shortcuts run "Skip Forward"'
-    comma = 'exec-and-forget shortcuts run "Skip Back"'
-    shift-comma = 'exec-and-forget shortcuts run "Skip Back"'
+    p = 'exec-and-forget nowplaying-cli togglePlayPause'
+    shift-p = 'exec-and-forget nowplaying-cli togglePlayPause'
+    period = 'exec-and-forget nowplaying-cli next'
+    shift-period = 'exec-and-forget nowplaying-cli next'
+    comma = 'exec-and-forget nowplaying-cli previous'
+    shift-comma = 'exec-and-forget nowplaying-cli previous'
 
     # hjkl controls (matching your i3 config)
-    h = 'exec-and-forget shortcuts run "Skip Back"'
-    l = 'exec-and-forget shortcuts run "Skip Forward"'
-    k = 'exec-and-forget shortcuts run "Play/Pause"'
+    h = 'exec-and-forget nowplaying-cli previous'
+    l = 'exec-and-forget nowplaying-cli next'
+    k = 'exec-and-forget nowplaying-cli togglePlayPause'
+    j = 'exec-and-forget nowplaying-cli togglePlayPause'
+
+    left = 'exec-and-forget nowplaying-cli previous'
+    right = 'exec-and-forget nowplaying-cli next'
+    up = 'volume up'
+    down = 'volume down'
 
     # Additional useful controls
-    space = 'exec-and-forget shortcuts run "Play/Pause"'
-    n = 'exec-and-forget shortcuts run "Skip Forward"'
-    shift-n = 'exec-and-forget shortcuts run "Skip Back"'
+    space = 'exec-and-forget nowplaying-cli togglePlayPause'
+    n = 'exec-and-forget nowplaying-cli next'
+    shift-n = 'exec-and-forget nowplaying-cli previous'
 
     # Volume percentage jumps
     1 = 'volume set 10'
