@@ -131,9 +131,15 @@ run= ["layout tiling"]
     # end tell' || open -a Ghostty
     # '''
 
+    # ctrl-alt-b = '''exec-and-forget osascript -e '
+    # tell application "Safari"
+    #     make new document at end of documents
+    #     activate
+    # end tell'
+    # '''
     ctrl-alt-b = '''exec-and-forget osascript -e '
-    tell application "Safari"
-        make new document at end of documents
+    tell application "Arc"
+        make new window
         activate
     end tell'
     '''
@@ -215,16 +221,16 @@ run= ["layout tiling"]
     cmd-alt-h = [] # disable hide application
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    ctrl-1 = 'workspace 1'
-    ctrl-2 = 'workspace 2'
-    ctrl-3 = 'workspace 3'
-    ctrl-4 = 'workspace 4'
-    ctrl-5 = 'workspace 5'
-    ctrl-6 = 'workspace 6'
-    ctrl-7 = 'workspace 7'
-    ctrl-8 = 'workspace 8'
-    ctrl-9 = 'workspace 9'
-    ctrl-0 = 'workspace 10'
+    # ctrl-1 = 'workspace 1'
+    # ctrl-2 = 'workspace 2'
+    # ctrl-3 = 'workspace 3'
+    # ctrl-4 = 'workspace 4'
+    # ctrl-5 = 'workspace 5'
+    # ctrl-6 = 'workspace 6'
+    # ctrl-7 = 'workspace 7'
+    # ctrl-8 = 'workspace 8'
+    # ctrl-9 = 'workspace 9'
+    # ctrl-0 = 'workspace 10'
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
@@ -341,6 +347,21 @@ run= ["layout tiling"]
     alt-shift-d = 'move-node-to-monitor --wrap-around next'
 
     # alt-esc = 'exec-and-forget shortcuts run "Swipe away notifications"'
+    alt-esc = '''exec-and-forget osascript -e '
+    tell application "System Events"
+        tell application process "Notification Center"
+            try
+                repeat until (count of windows) = 0
+                    set notificationWindow to first window
+                    set position of notificationWindow to {5000, 5000} -- move off-screen temporarily to hide
+                    delay 0.1 -- small delay for smooth operation
+                end repeat
+            on error
+                return "No notifications to swipe away."
+            end try
+        end tell
+    end tell'
+    '''
 
     # music
     alt-shift-p = 'exec-and-forget nowplaying-cli togglePlayPause'
