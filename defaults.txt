@@ -1,0 +1,37 @@
+  884  defaults write -g KeyRepeat -int 1
+  885  defaults write -g InitialKeyRepeat -int 10
+  886  defaults write -g InitialKeyRepeat -int 8
+ 1188  defaults write -g InitialKeyRepeat -int 10
+ 1242  defaults write -g KeyRepeat -int 2
+ 1264  defaults write -g KeyRepeat -int 1
+ 1322  defaults write -g KeyRepeat -int 2
+ 1526  defaults write -g InitialKeyRepeat -int 12
+ 1527  defaults write -g KeyRepeat -int 2
+ 1544  defaults write -g InitialKeyRepeat -int 10
+ 1545  defaults write -g KeyRepeat -int 1
+ 1690  defaults write -g KeyRepeat -int 1
+ 1691  defaults write -g InitialKeyRepeat -int 8
+ 1692  defaults write -g InitialKeyRepeat -int 5
+ 1693  defaults write -g InitialKeyRepeat -int 10
+ 1694  defaults write -g KeyRepeat -int 1
+ 1702  defaults write -g InitialKeyRepeat -int 12
+ 1703  defaults write -g KeyRepeat -int 2
+ 1704  defaults write -g InitialKeyRepeat -int 10
+ 1705  defaults write -g KeyRepeat -int 2
+ 1894  defaults write com.linear NSAppSleepDisabled -bool YES
+ 9464  defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool flase
+ 9466  defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool flase
+ 9467  defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
+13228  defaults write com.tinyspeck.slackmacgap ApplePressAndHoldEnabled -bool false
+17985  defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+17986  defaults write -g NSWindowShouldDragOnGesture -bool true
+18201  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+18202  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+18204  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+18206  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+18207  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+18209  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true\n
+18210  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+18212  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
+18213  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+18470  history | rg "defaults write"
