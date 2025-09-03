@@ -69,6 +69,7 @@ bgnotify_threshold=10
 # install with: git clone git@github.com:nix-community/nix-zsh-completions.git $ZSH_CUSTOM/plugins/nix-zsh-completions
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
 plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
+# plugins=(history-substring-search stack cabal man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell)
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell)
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
@@ -132,7 +133,6 @@ alias ecf='emacsclient -s ~/.config/emacs/server/server -c -n'
 alias vim='emacsclient -s ~/.config/emacs/server/server -ct -a /usr/bin/vim'
 alias vi='/usr/bin/vim'
 alias btc='bitcoin-cli -regtest'
-alias shake='stack exec shake --'
 alias rg="rg -L -. --glob '!.git'"
 # Linux only
 # alias open='xdg-open'
@@ -172,7 +172,6 @@ export ANSIBLE_FORCE_COLOR=True
 # TODO direnv
 # eval "$(direnv hook zsh)"
 
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 PATH=/usr/lib/postgresql/12/bin:${PATH}
 PATH="$HOME/.local/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/go/bin:$PATH"
 export PATH

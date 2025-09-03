@@ -162,6 +162,8 @@ run= ["layout tiling"]
 
     alt-comma = 'workspace prev --wrap-around'
     alt-period = 'workspace next --wrap-around'
+    alt-shift-comma = 'move-node-to-workspace prev --wrap-around'
+    alt-shift-period = 'move-node-to-workspace next --wrap-around'
     alt-ctrl-comma = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
     alt-ctrl-period = 'move-node-to-workspace next --wrap-around --focus-follows-window'
 
@@ -172,6 +174,7 @@ run= ["layout tiling"]
     alt-backslash = 'exec-and-forget aerospace workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
     alt-ctrl-backslash = 'exec-and-forget aerospace move-node-to-workspace --focus-follows-window $(aerospace list-workspaces --empty --monitor focused | head -n1)'
     alt-shift-backslash = 'exec-and-forget aerospace move-node-to-workspace $(aerospace list-workspaces --empty --monitor focused | head -n1)'
+    alt-ctrl-shift-backslash = 'exec-and-forget ~/.config/aerospace/move-all-windows-to-workspace.sh $(aerospace list-workspaces --empty --monitor focused | head -n1)'
 
     # cycle windows for an app
     alt-backtick = 'exec-and-forget ~/.config/aerospace/cycle-app-windows.sh next'
@@ -365,12 +368,13 @@ run= ["layout tiling"]
 
     # music
     alt-shift-p = 'exec-and-forget nowplaying-cli togglePlayPause'
-    alt-shift-period = 'exec-and-forget nowplaying-cli next'
-    alt-shift-comma  = 'exec-and-forget nowplaying-cli previous'
+    # alt-shift-period = 'exec-and-forget nowplaying-cli next'
+    # alt-shift-comma  = 'exec-and-forget nowplaying-cli previous'
     alt-shift-right = 'exec-and-forget nowplaying-cli next'
     alt-shift-left  = 'exec-and-forget nowplaying-cli previous'
 
-    alt-w = 'close'
+    # alt-w = 'close'
+    alt-w = 'exec-and-forget current_workspace="$(aerospace list-workspaces --focused)"; aerospace close; aerospace workspace "$current_workspace"'
     alt-shift-r = 'mode resize'
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
