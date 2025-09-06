@@ -36,7 +36,8 @@ move_app_to_scratchpad() {
 main() {
     if is_app_closed; then
         open -a "$APP_NAME"
-        sleep 0.5
+        sleep 1
+        aerospace move-node-to-workspace "$CURRENT_WORKSPACE" --focus-follows-window
     elif aerospace list-windows --workspace "$CURRENT_WORKSPACE" --format "%{app-bundle-id}" | grep -q "$APP_ID"; then
         move_app_to_scratchpad
     else
