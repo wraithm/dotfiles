@@ -130,6 +130,10 @@ bring_to_main_and_focus() {
     aerospace focus --window-id "$win_id"
 }
 
+focused_workspace_name() {
+    aerospace list-workspaces --focused
+}
+
 main() {
     # If Slack isn't running, launch and place it on main monitor.
     if ! slack_is_running; then
@@ -145,13 +149,28 @@ main() {
     [[ -z "${slack_id:-}" ]] && exit 0
 
     # Focus rule:
-    # - If Slack is currently focused: hide it to S.
+    # - If Slack is currently focused and not on S workspace: hide it to S.
+    # - If Slack is currently focused and on S: workspace-back-and-forth
     # - Otherwise: bring to main monitor and focus it.
     if focused_is_main_slack; then
-        # Only hide if the focused window is Slack's *chat* window.
-        send_to_scratchpad "$slack_id"
+        # Slack's *chat* window is focused → hide it
+        slack_ws="$(aerospace list-windows --all \
+                        --format "%{window-id}%{right-padding} | %{workspace}" \
+                  | awk -F ' \\| ' -v wid="$slack_id" '$1==wid {gsub(/^[ \t]+|[ \t]+$/,"",$2); print $2; exit}')"
+
+        if [[ "$slack_ws" == "$SCRATCH_WS" ]]; then
+            # Already in S → hiding would do nothing, so just leave S
+            aerospace workspace-back-and-forth
+        else
+            send_to_scratchpad "$slack_id"
+        fi
     else
-        # If a Huddle (or anything else) is focused, summon the main chat window instead.
+        # Not focused on main Slack (maybe Huddle, maybe behind, maybe other app)
+        # If we're sitting in S by accident, hop away first
+        if [[ "$(focused_workspace_name)" == "$SCRATCH_WS" ]]; then
+            aerospace workspace-back-and-forth
+        fi
+
         bring_to_main_and_focus "$slack_id"
     fi
 }
