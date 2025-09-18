@@ -104,11 +104,11 @@ automatically-unhide-macos-hidden-apps = true
     # You can uncomment the following lines to open up terminal with alt + enter shortcut
     # (like in i3)
 
-    alt-enter = '''exec-and-forget osascript -e '
-    tell application "iTerm"
-        create window with default profile
-    end tell'
-    '''
+    # alt-enter = '''exec-and-forget osascript -e '
+    # tell application "iTerm"
+    #     create window with default profile
+    # end tell'
+    # '''
     ctrl-alt-t = '''exec-and-forget osascript -e '
     tell application "iTerm"
         create window with default profile
@@ -192,10 +192,10 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-tab = 'exec-and-forget ~/.config/aerospace/cycle-apps.sh next'
     alt-ctrl-shift-tab = 'exec-and-forget ~/.config/aerospace/cycle-apps.sh prev'
 
-    alt-left = 'join-with left'
-    alt-down = 'join-with down'
-    alt-up = 'join-with up'
-    alt-right = 'join-with right'
+    alt-ctrl-left = 'join-with left'
+    alt-ctrl-down = 'join-with down'
+    alt-ctrl-up = 'join-with up'
+    alt-ctrl-right = 'join-with right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
@@ -385,7 +385,7 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
     if.app-id="com.mitchellh.ghostty"
-    run= ["layout tiling"]
+    run= ["layout floating"]
 
 # Add a resize mode
 [mode.resize.binding]

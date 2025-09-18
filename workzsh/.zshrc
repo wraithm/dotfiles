@@ -145,6 +145,8 @@ export VISUAL=$EDITOR
 export PAGER=/usr/bin/less
 alias less='/usr/bin/less'
 
+alias claude="/Users/mwraith/.claude/local/claude"
+
 TZ="America/Chicago"
 
 # OPAM configuration
