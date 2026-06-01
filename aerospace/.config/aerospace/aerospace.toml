@@ -383,9 +383,9 @@ automatically-unhide-macos-hidden-apps = true
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = ['layout floating']
 
-[[on-window-detected]]
-    if.app-id="com.mitchellh.ghostty"
-    run= ["layout floating"]
+# [[on-window-detected]]
+#     if.app-id = 'com.mitchellh.ghostty'
+#     run = ['layout floating']
 
 # Add a resize mode
 [mode.resize.binding]

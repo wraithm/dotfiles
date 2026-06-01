@@ -11,7 +11,7 @@ APP_NAME="Slack"
 SCRATCH_WS="S"
 
 # Preference order for the "main monitor"
-PREFERRED_MONITORS=("27GL850" "Built-in Retina Display")
+PREFERRED_MONITORS=("Studio Display" "27GL850" "Built-in Retina Display")
 
 focused_monitor_id() {
     aerospace list-monitors --focused | cut -d'|' -f1 | tr -d '[:space:]'
@@ -23,6 +23,8 @@ monitor_id_by_name() {
         awk -F ' \\| ' -v target="$name" '$2==target {gsub(/^[ \t]+|[ \t]+$/,"",$1); print $1; exit}'
 }
 
+# TODO update to use `list-monitors --format '%{monitor-is-main}'`
+# https://github.com/nikitabobko/AeroSpace/issues/1656
 pick_main_monitor_id() {
     local id
     for m in "${PREFERRED_MONITORS[@]}"; do

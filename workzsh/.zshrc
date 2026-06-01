@@ -68,8 +68,9 @@ bgnotify_threshold=10
 # nix-zsh-completions comes from: https://github.com/nix-community/nix-zsh-completions
 # install with: git clone git@github.com:nix-community/nix-zsh-completions.git $ZSH_CUSTOM/plugins/nix-zsh-completions
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
-plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
+# plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
 # plugins=(history-substring-search stack cabal man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell bgnotify)
+plugins=(history-substring-search terraform ssh-agent nix-zsh-completions nix-shell bgnotify)
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell)
 # plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix-zsh-completions nix-shell)
 # plugins=(osx git perl history-substring-search battery cabal stack mercurial brew brew-cask emacs man postgres sudo vagrant aws ssh-agent)
@@ -77,6 +78,12 @@ plugins=(history-substring-search stack man sudo terraform vagrant ssh-agent nix
 
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
+
+# just completions
+fpath=(~/.zsh/completions $fpath)
+
+# skip compaudit (single-user laptop — no shared fpath dirs to worry about)
+ZSH_DISABLE_COMPFIX=true
 
 source $ZSH/oh-my-zsh.sh
 
@@ -137,6 +144,8 @@ alias rg="rg -L -. --glob '!.git'"
 # Linux only
 # alias open='xdg-open'
 
+gwa() { git worktree add "${1//\//-}" "$1" }
+
 # export EDITOR="emacsclient -ct -a /usr/bin/vim"
 # export EDITOR="emacs -nw"
 export EDITOR=~/.local/bin/editor
@@ -144,8 +153,6 @@ export EDITOR=~/.local/bin/editor
 export VISUAL=$EDITOR
 export PAGER=/usr/bin/less
 alias less='/usr/bin/less'
-
-alias claude="/Users/mwraith/.claude/local/claude"
 
 TZ="America/Chicago"
 
@@ -184,10 +191,16 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     export TERMINFO=$HOME/.nix-profile/share/terminfo
 fi
 
-NIX_BTNL_TOOLS=$(nix-env -q bitnomial-tools --installed --out-path 2>/dev/null | awk '{print $2}')
-if [[ ! -z $NIX_BTNL_TOOLS && -d $NIX_BTNL_TOOLS ]]; then
+__btnl_cache=~/.cache/btnl_tools_path
+if [[ ! -f $__btnl_cache || $HOME/.nix-profile -nt $__btnl_cache ]]; then
+    mkdir -p ~/.cache
+    nix-env -q bitnomial-tools --installed --out-path 2>/dev/null | awk '{print $2}' > $__btnl_cache
+fi
+NIX_BTNL_TOOLS=$(<$__btnl_cache)
+if [[ -n $NIX_BTNL_TOOLS && -d $NIX_BTNL_TOOLS ]]; then
     export FPATH=$NIX_BTNL_TOOLS/share/zsh/site-functions:$NIX_BTNL_TOOLS/share/zsh/vendor-completions:$FPATH
 fi
+unset __btnl_cache
 
 # autoload -Uz compinit
 # for dump in ~/.zcompdump(N.mh+24); do
@@ -220,4 +233,37 @@ fi
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /nix/store/34m359hc8r2r8h9rsavysjmvyk29m0m6-nomad-1.4.4/bin/nomad nomad
 
+export TF_PLUGIN_CACHE_DIR="$HOME/.cache/terraform"
+[[ -d "$TF_PLUGIN_CACHE_DIR" ]] || mkdir -p "$TF_PLUGIN_CACHE_DIR"
+export TG_PROVIDER_CACHE=1
+
 ulimit -n 65536
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# #compdef opencode
+# ###-begin-opencode-completions-###
+# #
+# # yargs command completion script
+# #
+# # Installation: opencode completion >> ~/.zshrc
+# #    or opencode completion >> ~/.zprofile on OSX.
+# #
+# _opencode_yargs_completions()
+# {
+#   local reply
+#   local si=$IFS
+#   IFS=$'
+# ' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" opencode --get-yargs-completions "${words[@]}"))
+#   IFS=$si
+#   if [[ ${#reply} -gt 0 ]]; then
+#     _describe 'values' reply
+#   else
+#     _default
+#   fi
+# }
+# if [[ "'${zsh_eval_context[-1]}" == "loadautofunc" ]]; then
+#   _opencode_yargs_completions "$@"
+# else
+#   compdef _opencode_yargs_completions opencode
+# fi
+# ###-end-opencode-completions-###
